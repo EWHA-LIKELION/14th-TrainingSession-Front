@@ -1,5 +1,5 @@
 # 14th-TrainingSession-Front
-이화여자대학교 멋쟁이사자처럼 14기 프론트엔드 교육 세션
+이화여자대학교 멋쟁이사자처럼 14기 프론트엔드 교육 세션  
 260310 프론트엔드 아기사자 신지민
 
 ## 📌 Learning Summary
@@ -44,7 +44,7 @@
 
 * clone 이후 checkout을 하기 전, cd "레포지토리 이름"을 우선 작성하기 (헤맴)
 * checkout 뒤에 쓰는 건 "Branch 이름"이라는 것 잊지 말기
-* add 이후에 띄어쓰기 하고 온점 붙이기!
+* add 이후에 띄어쓰기 하고 온점 붙이기
 * GitHub의 사용 의의는 협업, 코드 공유라는 것 기억하기 (실습에서 백엔드 아기사자님과 각각 레포지토리를 하나씩 만들고 각자 만든 레포지토리에 Pull Request하여 공유가 바로 되지 않는 문제가 발생함)
 * Fork 할 때 'copy the main branch only' 선택 해제하기
 
@@ -58,11 +58,11 @@
 
 마크다운 문법 https://www.markdownguide.org/cheat-sheet/
 
-교육 세션 장표에 있던 마크다운 문법을 정독하고 과제의 가독성을 높이기 위해 노력했습니다..! 아직 부족하지만 앞으로 더 발전시켜보겠습니다.
+교육 세션 장표에 있던 마크다운 문법을 정독하고 과제의 가독성을 높이기 위해 노력했습니다! 아직 부족하지만 앞으로 더 발전시켜보겠습니다.
 
 
 ## 🔎 Result
-* organization + Repositoty 제작
+* Organization + Repository 제작
 ![실습 결과](./0310실습1.png)
 
 * 로컬 저장소 코드
