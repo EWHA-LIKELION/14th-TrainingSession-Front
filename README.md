@@ -120,9 +120,9 @@
 
 ## 🔎 Result
 <!--구현 결과를 올려주세요. 페이지, API 응답 등을 캡처해 주세요.-->
-![스크린샷-2026-03-11-오후-11.48.44.png](jb-image:img_1773240545657_ecb0fcd3ccf23)
+![Organization](./Organization.png)
  * Organization 및 제작된 Repository
-![스크린샷-2026-03-11-오후-11.56.53.png](jb-image:img_1773241036550_5fdf4205094338)
+![로컬저장소](./로컬저장소.png)
  * 로컬 저장소 코드 history - 많이 왔다갔다했습니다.
 ---
 
