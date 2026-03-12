@@ -1,6 +1,6 @@
 ## 📌 Learning Summary
 1. git
-   : 버전 관리 시스템
+   : 버전 관리 시스템, 저장이 아닌 기록!
    
    1) git data flow
     - 정방향 흐름
@@ -48,9 +48,14 @@
 ## 🔑 Key
 flow를 잘 파악하여 적재적소에 사용하기.
 readme 작성 미루지 않기. (나중에 까먹음..)
+git help -a : 사용할 수 있는 git command 명령어 전체 리스트
 
 ## 📒 Reference
 <!--참고 문헌을 정리해 주세요. 공식 문서, 블로그 등의 링크와 함께 어떤 기능을 구현할 때 참고했는지 덧붙여 주세요.-->
+https://modulabs.co.kr/blog/git-and-github-for-beginners 
+-> git을 처음 배워봐서 익히기 위해 git 설명들을 담은 글을 읽었습니다.
+https://blog.naver.com/jdusans/222043705693
+-> git의 다양한 명령어들을 학습했습니다.
 
 ## 🔎 Result
 <!--구현 결과를 올려주세요. 페이지, API 응답 등을 캡처해 주세요.-->
