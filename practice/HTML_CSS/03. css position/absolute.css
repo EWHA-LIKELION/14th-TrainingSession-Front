@@ -13,7 +13,7 @@
   border: solid;
   height: 100px;
   /* 아래 코드 주석 처리해주세요! */
-  position: fixed;
+  /* position: fixed; */
   margin-top: 30px;
 }
 .child {
