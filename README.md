@@ -64,6 +64,8 @@ https://blog.naver.com/jdusans/222043705693
 
 ## 🔎 Result
 <!--구현 결과를 올려주세요. 페이지, API 응답 등을 캡처해 주세요.-->
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/19db8ea8-0eb6-4098-adfe-f431895b4a63" />
+
 
 ## ✍🏻 Review
 이론을 배운 후 실제로 적용하는 과정이 시간이 꽤 걸려서 실습을 매끄럽게 할 수 있도록 공부를 해와야 함.
