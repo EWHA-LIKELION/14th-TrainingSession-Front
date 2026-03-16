@@ -1,6 +1,6 @@
 const tags = ["#태그", "#태그"];
 
-function PostArticle() {
+const PostArticle = () => {
   return (
     <article>
       <header>

@@ -1,4 +1,4 @@
-function CommentItem({ author, date, content }) {
+const CommentItem = ({ author, date, content }) => {
   return (
     <li>
       <header>
@@ -17,6 +17,6 @@ function CommentItem({ author, date, content }) {
       <p>{content}</p>
     </li>
   );
-}
+};
 
 export default CommentItem;

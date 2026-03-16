@@ -1,4 +1,4 @@
-function PageHeader() {
+const PageHeader = () => {
   return (
     <header>
       <img src="./icons/back.svg" alt="back" />

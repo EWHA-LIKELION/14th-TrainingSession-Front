@@ -15,7 +15,7 @@ const comments = [
   },
 ];
 
-function CommentSection() {
+const CommentSection = () => {
   return (
     <section>
       <div>
