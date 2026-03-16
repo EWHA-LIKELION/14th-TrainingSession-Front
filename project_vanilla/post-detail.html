@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML&CSS심화 과제</title>
+    <link rel="stylesheet" href="post-detail.css">
+</head>
+<body>
+    <!-- [화살표 + 목록으로] 상단바 -->
+    <header class="top-bar">
+        <div class="wrapper">
+            <span class="go-list">
+                <img src="images/back.svg"> 목록으로
+            </span>
+        </div>
+    </header>
+
+    <!-- 메인 영역 -->
+    <main class="content-area">
+        <div class="wrapper">
+            
+            <!-- 게시물 카드 -->
+            <article class="card post-section">
+
+                <!-- 게시자 및 작성 날짜 -->
+                <header class="post-header">
+                    <div class="profile-box">
+                        <img src="images/profile.png" class="profile-img">
+                        <div class="author-info">
+                            <strong class="nickname">likelion2026</strong>  <!--누가 썼는지는 중요하니까-->
+                            <span class="date">2026. MM. DD</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- 게시물 제목 -->
+                <h1 class="post-title">게시물 제목입니다.</h1>
+
+                <!-- 게시물 태그 -->
+                <div class="tag-box">
+                    <span class="tag">#태그</span>
+                    <span class="tag">#태그</span>
+                </div>
+                
+                <!-- 게시물 본문 -->
+                <div class="post-body">
+                    <p>이것은 본문입니다. 여기에 더 많은 텍스트가 들어갈 수 있습니다. 게시물의 내용은 여러 단락으로 구성될 수 있으며, 다양한 주제에 대해 이야기할 수 있습니다.</p>
+                    <p>두 번째 단락입니다. 여기에는 더 많은 정보와 세부 사항이 포함될 수 있습니다.</p>
+                    <div class="image-box">
+                        <img src="images/photo.png" class="post-img">
+                    </div>
+                </div>
+
+                <!-- 댓글 수, 좋아요 수  -->
+                <footer class="post-footer">
+                    <div class="response">
+                        <img src="images/like.svg"> 0
+                    </div>
+                    <div class="response">
+                        <img src="images/comment.svg"> 0
+                    </div>
+                </footer>
+            </article>
+
+            <!-- 댓글 카드 -->
+            <section class="card comment-section">
+                <!-- 댓글 헤더 -->
+                <h2 class="comment-count">댓글 <span class="num-text">n</span></h2>
+    
+                <!-- 댓글 제출 폼(윗쪽 정렬) -->
+                <form class="comment-form">
+                    <img src="images/profile.png" class="profile-img"> 
+
+                    <!-- 댓글 입력 창이랑 작성 버튼 오른쪽 정렬 -->
+                    <div class="comment-write-area">
+                        <textarea placeholder="댓글을 입력하세요."></textarea>
+        
+                        <div class="btn-row">
+                            <button type="submit" class="submit-btn">댓글 작성</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 작성된 댓글 리스트 -->
+                <div class="comment-list">
+                    <!-- 댓글1, 댓글끼리 구분선 넣어야! -->
+                    <div class="comment-item">
+                        <img src="images/profile.png" class="profile-img-sm">
+                        <!-- 프로필 옆 댓글 내용과 수정 버튼 사이의 간격 유동적 조절 -->
+                        <div class="comment-wrap">
+                            <div class="comment-header">    <!--윗쪽 정렬-->
+                                <div class="c-info">    <!--세로쌓기-->
+                                    <strong class="c-nickname">likelion2026</strong>
+                                    <span class="c-date">2026. 03. 01. 18:36</span>
+                                </div>
+                                <div class="c-actions">
+                                    <button type="button" class="btn-action edit-btn">수정</button>
+                                    <button type="button" class="btn-action del-btn">삭제</button>
+                                </div>
+                            </div>
+                            <p class="comment-text">유익한 정보네요. 도움이 많이 되었습니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- 댓글2 -->
+                    <div class="comment-item">
+                        <img src="images/profile.png" class="profile-img-sm">
+                        <div class="comment-wrap">
+                            <div class="comment-header">
+                                <div class="c-info">
+                                    <strong class="c-nickname">likelion2026</strong>
+                                    <span class="c-date">2026. 03. 01. 12:48</span>
+                                </div>
+                                <div class="c-actions">
+                                    <button type="button" class="btn-action edit-btn">수정</button>
+                                    <button type="button" class="btn-action del-btn">삭제</button>
+                                 </div>
+                            </div>
+                            <p class="comment-text">좋은 글 감사합니다!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>
