@@ -5,6 +5,6 @@ const PageHeader = () => {
       <h1>목록으로</h1>
     </header>
   );
-}
+};
 
 export default PageHeader;

@@ -40,6 +40,6 @@ const PostArticle = () => {
       </footer>
     </article>
   );
-}
+};
 
 export default PostArticle;

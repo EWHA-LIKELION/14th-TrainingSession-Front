@@ -43,6 +43,6 @@ const CommentSection = () => {
       </ul>
     </section>
   );
-}
+};
 
 export default CommentSection;
