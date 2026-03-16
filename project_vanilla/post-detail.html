@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시물 상세 조회</title>
+</head>
+<body>
+    <link rel="stylesheet" href="post-detail.css" />
+
+
+    <header class="top-bar">
+        <div class="center-align">
+            <img src="./images/back.svg" alt="뒤로가기">
+            <h5>목록으로</h5>
+        </div>
+
+    </header>
+
+    <main>
+        <article>
+            <header class="user-profile">
+                <div class="profile">
+                    <img src="./images/profile.png" alt="프로필 사진">
+                    <div class="user-text">
+                        <h6><strong>TuttoShin</strong></h6>
+                        <p class="date">2026.03.16</p>
+                    </div>
+                </div>
+            </header>
+            <section class="post-title">
+                <h1>신지민, 과제 제출 성황리에 마쳐...</h1>
+            </section>
+
+            <span class="hashtag">#멋쟁이사자처럼</span>
+            <span class="hashtag">#프론트엔드</span>
+
+            <section class="post-text">
+                3월 12일 교육 세션이 끝나고 과연 내가 이걸 할 수 있을까 싶었습니다. 시행착오도 많았고 지금 결과물로 제출하는 코드도 완벽하다고 생각하진 않지만... 어쨌든 제출했다는 사실 자체가 기쁘네요!! <br /><br />
+                예시 사진으로 주신 강아지 사진🐶이 너무 귀여워서 덕분에 힐링하며 과제했습니다. <br />
+                <img src="./images/photo.png" alt="본문 사진">
+            </section>
+            <footer>
+                <img src="./images/like.svg" alt="좋아요">
+                <h6>0</h6>
+                <img src="./images/comment.svg" alt="댓글">
+                <h6>0</h6>
+            </footer>
+        </article>
+
+        <section class="comment">
+            <div class="comment-count">
+                <h3>댓글</h3>
+                <span class="count">n</span>
+            </div>
+    
+            <form action="submit" method="get" class="comment-form">
+                <div class="input-row">
+                    <img src="./images/profile.png" alt="프로필 사진">
+                    <textarea placeholder="댓글을 입력하세요." class="comment-input"></textarea>
+                </div>
+                <button type="submit" class="comment-submit">댓글 작성</button>
+            </form>
+
+            <div class="comment-list">
+                <div class="comment-item">
+                    <img src="./images/profile.png" alt="프로필 사진" class="comment-profile">
+                    <div class="comment-body">
+                        <div class="comment-header">
+                            <div class="user-info">
+                                <strong>likelion_official</strong>
+                                <span>2026.03.16 10:36</span>
+                            </div>
+                            <div class="comment-controls">
+                                <button type="button" class="correction-button">수정</button>
+                                <button type="button" class="delete-button">삭제</button>
+                            </div>
+                        </div>
+                    <p>앞으로 더욱 열심히 하길 바랍니다.</p>
+                    </div>
+                </div>
+
+                <hr class="comment-divider">
+
+                <div class="comment-item">
+                    <img src="./images/profile.png" alt="프로필 사진" class="comment-profile">
+                    <div class="comment-body">
+                        <div class="comment-header">
+                            <div class="user-info">
+                                <strong>TuttoShin</strong>
+                                <span>2026.03.16 12:48</span>
+                            </div>
+                        </div>
+                    <p>다음 교육 세션도 기대됩니다!!</p>
+                    </div>
+                </div>
+                <hr class="comment-divider">
+            </div>
+        
+        </section>
+    </main>
+
+ 
+</body>
+</html>
