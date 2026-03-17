@@ -139,11 +139,19 @@ section {
 .comment {
   display: flex;
   flex-direction: column; /* 세로 배치 */
+  align-items: center;
   gap: 0.5rem; /* 댓글 간 간격 */
+}
+
+/* 댓글 아이템 구분선 */
+.comment hr {
+  width: 23.75rem;
+  border: 1px solid #eff0f1;
 }
 
 /* 각 댓글 아이템 */
 .comment li {
+  width: 100%;
   padding: 1.25rem;
   margin-bottom: 0.5rem;
 }
