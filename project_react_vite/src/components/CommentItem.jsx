@@ -1,4 +1,4 @@
-const CommentItem = ({ author, date, content }) => {
+const CommentItem = ({ author, date, content, isMyComment }) => {
   return (
     <li>
       <header>
@@ -9,10 +9,12 @@ const CommentItem = ({ author, date, content }) => {
             <p>{date}</p>
           </div>
         </div>
-        <div>
-          <button className="change">수정</button>
-          <button className="delete">삭제</button>
-        </div>
+        {isMyComment ? (
+          <div>
+            <button className="change">수정</button>
+            <button className="delete">삭제</button>
+          </div>
+        ) : null}
       </header>
       <p>{content}</p>
     </li>
