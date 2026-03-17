@@ -1,3 +1,4 @@
+import { useState } from "react";
 import CommentItem from "./CommentItem";
 
 const comments = [
@@ -18,6 +19,9 @@ const comments = [
 ];
 
 const CommentSection = () => {
+  // let comment = "";
+  const [comment, setComment] = useState("");
+
   return (
     <section>
       <div>
@@ -28,9 +32,18 @@ const CommentSection = () => {
       <form action="submit_url">
         <div>
           <img src="./images/profile.png" alt="profile" />
-          <textarea placeholder="댓글을 입력하세요." required></textarea>
+          <textarea
+            // onChange={(e) => {
+            //   comment = e.target.value;
+            // }}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="댓글을 입력하세요."
+            required
+          ></textarea>
         </div>
-        <button type="submit">댓글 작성</button>
+        <button disabled={comment.length === 0} type="submit">
+          댓글 작성
+        </button>
       </form>
 
       {/* 1단계: props 개념 설명 - CommentItem을 직접 두 번 사용 */}
