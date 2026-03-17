@@ -1,0 +1,47 @@
+/* 1. "gridContainer" 클래스에 1:1:1 비율(3열)로 grid를 적용해주세요. */
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+
+/* 2. gap도 적용해주세요. */
+  gap: 10px;
+}
+/* 3. 미디어 쿼리를 사용하여, 300px 이하일 때 1:1(2열) gird가 되도록 해주세요. */
+@media only screen and (max-width: 300px){
+  .gridContainer{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+/* 아래 코드 수정하지 X */
+.item {
+  text-align: center;
+  height: 100px;
+}
+.item-1 {
+  background-color: lightyellow;
+}
+.item-2 {
+  background-color: lightgreen;
+}
+.item-3 {
+  background-color: lightblue;
+}
+.item-4 {
+  background-color: lightpink;
+}
+.item-5 {
+  background-color: lightcoral;
+}
+.item-6 {
+  background-color: lightsalmon;
+}
+.item-7 {
+  background-color: purple;
+}
+.item-8 {
+  background-color: orange;
+}
+.item-9 {
+  background-color: lightseagreen;
+}
