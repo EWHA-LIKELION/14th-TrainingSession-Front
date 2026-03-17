@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시물 상세 조회</title>
+    <link rel="stylesheet" href="post_detail.css" />
+  </head>
+  <body>
+    <main>
+      <header class="top_header">
+        <div class="header_align">
+          <img src="./images/back.svg" />
+          <span>목록으로</span>
+        </div>
+      </header>
+
+      <article>
+        <header>
+          <div class="profile_container">
+            <img src="./images/profile.png" />
+            <div class="comment_content">
+              <div class="profile_text">
+                <div class="nickname">likelion2026</div>
+                <div class="date">2026. DD. MM</div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <h1>게시물 제목입니다.</h1>
+        <button class="tag_button">#태그</button>
+        <button class="tag_button">#태그</button>
+
+        <div class="text">
+          이것은 본문입니다. 여기에 더 많은 텍스트가 들어갈 수 있습니다.
+          게시물의 내용은 여러 단락으로 구성될 수 있으며, 다양한 주제에 대해
+          이야기할 수 있습니다.
+        </div>
+
+        <div class="text">
+          두 번째 단락입니다. 여기에는 더 많은 정보와 세부 사항이 포함될 수
+          있습니다.
+        </div>
+        <br />
+        <img src="./images/photo.png" />
+
+        <footer>
+          <div class="reaction_bar">
+            <div class="reaction">
+              <img src="./images/like.svg" />
+              <span>0</span>
+            </div>
+            <div class="reaction">
+              <img src="./images/comment.svg" />
+              <span>0</span>
+            </div>
+          </div>
+        </footer>
+      </article>
+      <section>
+        <span class="bold_text">댓글</span>
+        <span class="semibold_text">n</span>
+        <form
+          style="display: flex; flex-direction: column; align-items: center"
+        >
+          <div class="comment_write">
+            <img src="./images/profile.png" />
+            <textarea id="user_comment">댓글을 입력하세요.</textarea>
+          </div>
+          <div class="comment_submit_area">
+            <button type="submit" class="submit_button">댓글 작성</button>
+          </div>
+        </form>
+
+        <div class="comment_container">
+          <img src="./images/profile.png" />
+          <div class="comment_content">
+            <div class="profile_text">
+              <div class="nickname">likelion2026</div>
+              <div class="date">2026. DD. MM</div>
+            </div>
+            <div class="comment_text">
+              유익한 정보네요. 도움이 많이 되었습니다.
+            </div>
+          </div>
+          <div class="comment_edit_buttons">
+            <button class="button_edit">수정</button>
+            <button class="button_delete">삭제</button>
+          </div>
+        </div>
+
+        <div class="horizontal-line"></div>
+
+        <div class="comment_container">
+          <img src="./images/profile.png" />
+          <div class="comment_content">
+            <div class="profile_text">
+              <div class="nickname">likelion2026</div>
+              <div class="date">2026. DD. MM</div>
+            </div>
+            <div class="comment_text">
+              유익한 정보네요. 도움이 많이 되었습니다.
+            </div>
+          </div>
+        </div>
+        <div class="horizontal-line"></div>
+      </section>
+    </main>
+  </body>
+</html>
