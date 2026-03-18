@@ -1,15 +1,9 @@
-import PageHeader from "./components/PageHeader";
-import PostArticle from "./components/PostArticle";
-import CommentSection from "./components/CommentSection";
+import PostDetailPage from "./pages/post-detail/PostDetailPage";
 
 function App() {
   return (
     <>
-      <PageHeader />
-      <main>
-        <PostArticle />
-        <CommentSection />
-      </main>
+      <PostDetailPage />
     </>
   );
 }
