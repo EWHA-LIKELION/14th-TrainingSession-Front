@@ -10,7 +10,7 @@
     <!-- [화살표 + 목록으로] 상단바 -->
     <header class="top-bar">
         <div class="wrapper">
-            <span class="go-list">
+            <span class="go-list" alt="back">
                 <img src="images/back.svg"> 목록으로
             </span>
         </div>
@@ -38,15 +38,18 @@
                 <h1 class="post-title">게시물 제목입니다.</h1>
 
                 <!-- 게시물 태그 -->
-                <div class="tag-box">
-                    <span class="tag">#태그</span>
-                    <span class="tag">#태그</span>
-                </div>
+                <ul class="post-tags">
+                    <li><button type="button" class="tag">#태그</button></li>
+                    <li><button type="button" class="tag">#태그</button></li>
+                </ul>
                 
                 <!-- 게시물 본문 -->
                 <div class="post-body">
-                    <p>이것은 본문입니다. 여기에 더 많은 텍스트가 들어갈 수 있습니다. 게시물의 내용은 여러 단락으로 구성될 수 있으며, 다양한 주제에 대해 이야기할 수 있습니다.</p>
-                    <p>두 번째 단락입니다. 여기에는 더 많은 정보와 세부 사항이 포함될 수 있습니다.</p>
+                    <p>이것은 본문입니다. 여기에 더 많은 텍스트가 들어갈 수 있습니다. 게시물의 내용은 여러 단락으로 구성될 수 있으며, 다양한 주제에 대해 이야기할 수 있습니다.
+                     <br/>
+                     <br/>
+                    두 번째 단락입니다. 여기에는 더 많은 정보와 세부 사항이 포함될 수 있습니다.
+                    </p>
                     <div class="image-box">
                         <img src="images/photo.png" class="post-img">
                     </div>
@@ -54,27 +57,31 @@
 
                 <!-- 댓글 수, 좋아요 수  -->
                 <footer class="post-footer">
-                    <div class="response">
-                        <img src="images/like.svg"> 0
-                    </div>
-                    <div class="response">
-                        <img src="images/comment.svg"> 0
-                    </div>
+                    <button type="button" class="response">
+                        <img src="images/like.svg" alt="like">
+                        <span>0</span>
+                    </button>
+    
+                    <button type="button" class="response">
+                        <img src="images/comment.svg" alt="comment">
+                        <span>0</span>
+                    </button>
+
                 </footer>
             </article>
 
             <!-- 댓글 카드 -->
             <section class="card comment-section">
                 <!-- 댓글 헤더 -->
-                <h2 class="comment-count">댓글 <span class="num-text">n</span></h2>
+                <h2 class="comment-title">댓글 <span class="comment-count">n</span></h2>
     
                 <!-- 댓글 제출 폼(윗쪽 정렬) -->
-                <form class="comment-form">
+                <form action="submit_url" class="comment-form">
                     <img src="images/profile.png" class="profile-img"> 
 
                     <!-- 댓글 입력 창이랑 작성 버튼 오른쪽 정렬 -->
                     <div class="comment-write-area">
-                        <textarea placeholder="댓글을 입력하세요."></textarea>
+                        <textarea id="comment-input" placeholder="댓글을 입력하세요."></textarea>
         
                         <div class="btn-row">
                             <button type="submit" class="submit-btn">댓글 작성</button>
@@ -83,9 +90,9 @@
                 </form>
 
                 <!-- 작성된 댓글 리스트 -->
-                <div class="comment-list">
+                <ul class="comment-list">
                     <!-- 댓글1, 댓글끼리 구분선 넣어야! -->
-                    <div class="comment-item">
+                    <li class="comment-item">
                         <img src="images/profile.png" class="profile-img-sm">
                         <!-- 프로필 옆 댓글 내용과 수정 버튼 사이의 간격 유동적 조절 -->
                         <div class="comment-wrap">
@@ -101,10 +108,10 @@
                             </div>
                             <p class="comment-text">유익한 정보네요. 도움이 많이 되었습니다.</p>
                         </div>
-                    </div>
+                    </li>
 
                     <!-- 댓글2 -->
-                    <div class="comment-item">
+                    <li class="comment-item">
                         <img src="images/profile.png" class="profile-img-sm">
                         <div class="comment-wrap">
                             <div class="comment-header">
@@ -119,12 +126,13 @@
                             </div>
                             <p class="comment-text">좋은 글 감사합니다!</p>
                         </div>
-                    </div>
+                    </li>
                 </div>
             </section>
 
         </div>
     </main>
 
+    <script src="post-detail.js"></script>
 </body>
 </html>

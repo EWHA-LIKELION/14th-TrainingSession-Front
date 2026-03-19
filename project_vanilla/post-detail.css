@@ -10,13 +10,14 @@ body {
     background-color: #eef6fff8; /* 전체 배경 묘한... 회색 */
     color: #2e2e2e; /* 찾아보니까 그냥 검정보다 많이 쓴다네요...*/
     line-height: 1.45; /* 기본 줄 간격 설정 */
+    font-size: 1rem;
 }
 
 /* card랑 [<-목록으로]의 왼쪽 정렬 레이아웃, 화면 크기 변화 생각하자 */
 .wrapper {
-    max-width: 700px; /* 카드의 전체 최대 너비 고정 */
+    max-width: 43.75rem; /* 카드의 전체 최대 너비 고정 */
     margin: 0 auto;   /* 화면의 정중앙에 배치 - 가운데 정렬할 때 많이 사용한댔음! */
-    padding: 0 20px;  /* 화면 크기가 변할 수 있으니 작은 화면에서 양옆 최소 여백 */
+    padding: 0 1.25rem;  /* 화면 크기가 변할 수 있으니 작은 화면에서 양옆 최소 여백 */
     width: 100%; /* 화면 잘림 방지용 */
 }
 
@@ -24,34 +25,34 @@ body {
 .top-bar {
     width: 100%; /* 화면의 좌우를 꽉! 채우자 */
     background-color: white; /* 상단바는 흰색 배경 */
-    padding: 15px 0; /* 목록으로 글자랑 상단바 끝 사이에 여유 공간*/
+    padding: 0.9375rem 0; /* 목록으로 글자랑 상단바 끝 사이에 여유 공간*/
 }
 
 .go-list {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 16px;
+    gap: 0.5rem;
+    font-size: 1rem;
     color: #2e2e2e;
     font-weight: 500;
 }
 
 .go-list img {
-    width: 16px;
+    width: 1rem;
     height: auto;
 }
 
 /* 4. 메인 영역 */
 .content-area {
-    padding: 30px 0; /* 이렇게 하니까 마진 병합 이슈 해결 가능, 전체 main의 회색 위 아래 여백 두기*/
+    padding: 1.875rem 0; /* 이렇게 하니까 마진 병합 이슈 해결 가능, 전체 main의 회색 위 아래 여백 두기*/
 }
 
 /* 카드 스타일 기본 설정 (post article & comments section) */
 .card {
     background-color: white;
-    border-radius: 10px;
-    padding: 30px;
-    margin-bottom: 25px; /* 카드끼리 붙으면 곤란하니까 */
+    border-radius: 0.625rem;
+    padding: 1.875rem;
+    margin-bottom: 1.5625rem; /* 카드끼리 붙으면 곤란하니까 */
     
 }
 
@@ -59,52 +60,59 @@ body {
 .profile-box {
     display: flex;
     align-items: center; /* 프사랑 author-info 정렬 */
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
 }
 
 /* author-info의 세로 정렬 */
 .author-info { display: flex; 
     flex-direction: column; }
-.nickname { font-weight: bold; font-size: 15px; }
-.date { font-size: 12px; color: #aaa; }
+.nickname { font-weight: bold; font-size: 0.9375rem; }
+.date { font-size: 0.75rem; color: #aaa; }
 
 /* 게시글 제목 */
-.post-title { font-size: 24px; margin-bottom: 12px; font-weight: 700; }
+.post-title { font-size: 1.5rem; margin-bottom: 0.75rem; font-weight: 700; }
 
 /* 태그 표시 영역 */
-.tag-box { margin-bottom: 15px; }
+.post-tags { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4375rem;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0.9375rem; }
 /* span 써서 inline이니까 좌우로 정렬 기본적으로 된다! 기억해두쟈..~ */
 .tag {
     background-color: #e6fffa;
     color: #38b2ac;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 12px;
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.25rem;
+    border: none;
+    font-size: 0.75rem;
     font-weight: bold;
-    margin-right: 6px;
+    cursor: pointer;
 }
 
 
 /* 게시글 본문 */
-.post-body { margin: 25px 0; } /*이렇게 해놓으니까 본문 위아래로 최소 여유공간 늘 확보 가능 */
-.post-body p { margin-bottom: 15px; font-size: 14px; color: #606060; }
+.post-body { margin: 1.5625rem 0; } /*이렇게 해놓으니까 본문 위아래로 최소 여유공간 늘 확보 가능 */
+.post-body p { margin-bottom: 0.9375rem; font-size: 0.875rem; color: #606060; }
 
 /* 게시글 이미지 */
-.image-box { width: 100%; margin: 25px auto; }
+.image-box { width: 100%; margin: 1.5625rem auto; }
 .post-img { 
     width: 100%;    /* 카드 패딩 빼고 너비 꽉 채우기 */
     height: auto;   /* 원본 비율 유지 */
     display: block; /* 이미지는 인라인 요소라고 해서 필요 */
-    border-radius: 8px; 
+    border-radius: 0.5rem; 
 }
 
 /* 게시물 하단 반응수 (하트, 댓글수) */
 .post-footer {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-top: 30px;
+    gap: 0.9375rem;
+    margin-top: 1.875rem;
     color: #b1afaf; /* svg랑 비슷한 연한 회색 */
 }
 
@@ -112,19 +120,24 @@ body {
 .response { 
     display: flex; 
     align-items: center; 
-    gap: 6px; 
-    font-size: 14px; }
-.response img { width: 18px; }
+    gap: 0.375rem; 
+    font-size: 0.875rem;
+    background: none;    /* 버튼 배경 삭제 */
+    border: none;        /* 버튼 테두리 삭제 */
+    cursor: pointer;
+    padding: 0;          /* 버튼 기본 여백 초기화 */
+    color: inherit;      /* 부모의 연한 회색(#b1afaf) 그대로 쓰기 */ }
+.response img { width: 1.125rem; }
 
 
 
 /* --- 댓글 섹션 헤더 부분 --- */
-.comment-count { 
-    font-size: 18px; 
-    margin-bottom: 20px; 
+.comment-title { 
+    font-size: 1.125rem; 
+    margin-bottom: 1.25rem; 
 }
 
-.num-text { 
+.comment-count { 
     color: #757575; 
     font-weight: 500; 
 }
@@ -132,15 +145,15 @@ body {
 /* 댓글 제출 폼 부분 */
 .comment-form {
     display: flex;
-    gap: 15px;
-    margin-bottom: 35px; /* 아래 댓글 리스트랑 구분되도록! */
+    gap: 0.9375rem;
+    margin-bottom: 2.1875rem; /* 아래 댓글 리스트랑 구분되도록! */
     align-items: flex-start; 
 }
 
 /* 댓글 폼 쪽 프사라 댓글 리스트보다 좀 크게 +) 게시글 프사랑 크기 똑같이 해두 괜찮겠다 */
 .profile-img {
-    width: 46px;
-    height: 46px;
+    width: 2.875rem;
+    height: 2.875rem;
     object-fit: cover; /* 보통 프로필 사진 설정할 때 요렇게..함 */
 }
 
@@ -152,13 +165,13 @@ body {
 /* 댓글 입력 박스 */
 textarea {
     width: 100%;
-    height: 75px;       
-    border: 2px solid #ddd; /* 연한 회색 테두리 */
-    border-radius: 5px;
-    padding: 12px; /* 글자 입력했을 때 바로 딱 붙는 거 방지 */
+    height: 4.6875rem;       
+    border: 0.125rem solid #ddd; /* 연한 회색 테두리 */
+    border-radius: 0.3125rem;
+    padding: 0.75rem; /* 글자 입력했을 때 바로 딱 붙는 거 방지 */
     outline: none;  /* 클릭해도 테두리 색이 안 변하게 */
     resize: none;   /* 임의로 크기 조절 못 하게 고정 */
-    font-size: 14px;
+    font-size: 0.875rem;
     font-family: inherit; /* 댓글 입력하세요 부분 폰트 설정 */
 }
 
@@ -171,7 +184,7 @@ textarea::placeholder{
 /* 버튼 배치: 테두리 밖, 오른쪽 아래 구석 */
 .btn-row {
     text-align: right; /*입력창 너비 보존 및 코드 간단하려면 이게 더 나은 듯 */
-    margin-top: 8px; /* 입력창 테두리와의 간격 */
+    margin-top: 0.5rem; /* 입력창 테두리와의 간격 */
 }
 
 /* 제출 버튼 */
@@ -179,18 +192,23 @@ textarea::placeholder{
     background-color: #adb5bd; 
     color: white;
     border: none;
-    padding: 7px 15px;
-    border-radius: 4px;
+    padding: 0.4375rem 0.9375rem;
+    border-radius: 0.25rem;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 0.8125rem;
 }
 
 /* 댓글 리스트 */
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 .comment-item {
     position: relative;
     display: flex; /* 프사 옆에 댓글 위치하기 */
-    gap: 12px;           
-    padding: 30px 20px;
+    gap: 0.75rem;           
+    padding: 1.875rem 1.25rem;
 }
 
 /* 댓글 사이 구분선 */
@@ -200,7 +218,7 @@ textarea::placeholder{
     bottom: 0; 
     left: 20%;
     right: 20%;
-    height: 1px;
+    height: 0.0625rem;
     background-color:#eeeeee
 }
 
@@ -210,8 +228,8 @@ textarea::placeholder{
 
 /* 댓글 리스트 프로필 (좀 더 미니미) */
 .profile-img-sm {
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
     object-fit: cover;
 }
 
@@ -222,7 +240,7 @@ textarea::placeholder{
 /* 헤더: 작성 정보와 [수정/삭제 버튼] 정렬 */
 .comment-header {
     display: flex;
-    margin-bottom: 8px;      /* 본문과의 간격 */
+    margin-bottom: 0.5rem;      /* 본문과의 간격 */
     align-items: flex-start; /* 버튼들이 닉네임 윗선에 맞게 정렬 */
 }
 
@@ -230,17 +248,17 @@ textarea::placeholder{
 .c-info { 
     display: flex;
     flex-direction: column;  
-    gap: 2px; 
+    gap: 0.125rem; 
 }
 
 .c-nickname { 
     font-weight: bold; 
-    font-size: 14px; 
+    font-size: 0.875rem; 
     line-height: 1.2;
 }
 
 .c-date { 
-    font-size: 11px; 
+    font-size: 0.6875rem; 
     color: #aaa;   /* 날짜는 연한 회색 */
 }
 
@@ -248,7 +266,7 @@ textarea::placeholder{
 .c-actions {
     margin-left: auto;   /* 왼쪽 여백을 최대치로 받아 버튼들 오른쪽으로 밀어내기 */
     display: flex;
-    gap: 10px;
+    gap: 0.625rem;
     opacity: 0;          /* 평소엔 숨김 */
 }
 
@@ -261,7 +279,7 @@ textarea::placeholder{
 .btn-action {
     background: none;
     border: none;
-    font-size: 12px;
+    font-size: 0.75rem;
     cursor: pointer;
     padding: 0;
 }
@@ -278,7 +296,8 @@ textarea::placeholder{
 
 /* 댓글 본문 */
 .comment-text {
-    font-size: 14px;
+    white-space: pre-wrap;
+    font-size: 0.875rem;
     color: #444;
     line-height: 1.5;
     margin: 0;  /* 닉네임에 맞춰 왼쪽 정렬 */
