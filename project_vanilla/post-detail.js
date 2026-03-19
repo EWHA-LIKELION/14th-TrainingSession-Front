@@ -19,8 +19,25 @@ function addComment() {
     return;
   }
 
-  const newComment = document.createElement('li');
-  newComment.textContent = text;
+   const newComment = document.createElement('li');
+
+  newComment.innerHTML = `
+    <header class="comment-header">
+      <div class="comment-header-info">
+        <img src="images/profile.png" class="profile-img small" alt="profile" />
+        <div class="comment-info">
+          <h5>likelion2026</h5>
+          <p>${new Date().toLocaleString()}</p>
+        </div>
+      </div>
+      <div class="comment-actions">
+        <button class="change" type="button">수정</button>
+        <button class="delete" type="button">삭제</button>
+      </div>
+    </header>
+    <p class="comment-text">${text}</p>
+  `;
+
 
   commentList.append(newComment);
 
