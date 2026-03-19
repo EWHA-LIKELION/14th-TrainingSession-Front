@@ -1,220 +1,281 @@
-*{
-    font-family: "SUIT", sans-serif;
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+/* 전체 요소 기본 스타일 초기화 */
+* {
+  box-sizing: border-box; /* padding, border를 width에 포함 */
+  margin: 0; /* 기본 여백 제거 */
+  padding: 0; /* 기본 안쪽 여백 제거 */
+  list-style: none; /* 리스트 불릿 제거 */
+  font-family: 'Pretendard', sans-serif;
 }
 
-body{
-    margin: 0;
-    background-color: #f5f6f8;
+/* 버튼 기본 스타일 제거 */
+button {
+  border: none; /* 테두리 제거 */
+  background: none; /* 배경색 제거 */
+  cursor: pointer; /* 마우스 올리면 포인터 모양 */
 }
 
+/* 메인 컨텐츠 영역 */
+main {
+  display: flex; /* 플렉스 박스 사용 */
+  flex-direction: column; /* 세로 방향 정렬 */
+  align-items: center; /* 가로 중앙 정렬 */
+  background-color: #f9fafb; /* 배경색: 연한 회색 */
+  padding: 4rem 0 6.88rem 0; /* 위아래 여백 */
+}
+
+/* 게시물과 댓글 영역 공통 스타일 */
+article,
+section {
+  width: 46.94rem; /* 고정 너비 */
+  padding: 1.88rem; /* 안쪽 여백 */
+  border-radius: 0.5rem; /* 모서리 둥글게 */
+  background-color: #fff; /* 배경색: 흰색 */
+}
+
+/* 상단 고정 헤더 */
 .page-header {
-    padding: 15px 15px;
-    background-color: white;
-    font-size: 18px;
-}
-.post-title{
-    font-size: 32px;
-    font-weight: 600;
-    margin: 18px 0 15px 0;
-}
-.post-card{
-    background: white;
-    width: 700px;
-    margin: 40px auto;
-    padding: 24px;
-    border-radius: 12px;
-}
-.author-name{
-    font-weight: bold;
-    margin: 0;
-}
-.post-date{
-    color: #c1c6cf;
-    font-size: 12px;
-    margin: 2px 0 0;
+  width: 100%; /* 전체 너비 */
+  height: 4rem; /* 높이 고정 */
+  display: flex; /* 플렉스 박스 */
+  align-items: center; /* 세로 중앙 정렬 */
+  position: fixed; /* 화면에 고정 */
+  top: 0; /* 화면 맨 위 */
+  z-index: 10; /* 다른 요소보다 위에 표시 */
+  padding: 0 16.44rem; /* 좌우 여백 */
+  gap: 0.81rem; /* 자식 요소 간 간격 */
+  background-color: #fff; /* 배경색: 흰색 */
 }
 
-.post-author{
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.page-header h1 {
+  font-size: 1.25rem;
+  font-weight: 400;
 }
 
-.tag{
-    background-color: #ebfbf3;
-    color: #18bd84;
-    border-radius: 3px;
-    padding: 5px 10px;
-    font-size: 12px;
-    margin-right: 6px;
-}
-.post-content{
-    color: #9399a5;
-    font-weight: 400;
-    font-size: 16px;
+/* 게시물 영역 상단 여백 (고정 헤더 때문) */
+article {
+  margin-top: 2.81rem;
 }
 
-.post-actions{
-    display:flex;
-    justify-content: start;
-    align-items: center;
-    margin-top: 40px;
-    gap: 12px;
+/* 댓글 영역 상단 여백 */
+section {
+  margin-top: 2.5rem;
 }
 
-.like,
-.comments{
-    display: flex;
-    align-items: center;
-    gap: 4px;
+/* 게시물 작성자 정보 영역 */
+.article-header {
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 0.5rem; /* 프로필 이미지와 텍스트 간격 */
+  margin-bottom: 1.25rem;
 }
 
-.post-actions img{
-    display: block;
+/* 작성자 이름과 날짜 영역 */
+.post-info {
+  display: flex;
+  flex-direction: column; /* 세로 방향 정렬 */
+  gap: 0.25rem; /* 이름과 날짜 간격 */
 }
 
-span{
-    color: #c1c6cf;
+.post-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.comment-section{
-    background: white;
-    width: 700px;
-    margin: 16px auto 40px;
-    padding: 24px;
-    border-radius: 12px;
+.post-info p {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #b5bbc5; /* 연한 회색 */
 }
 
-.comment-form{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 24px;
+/* 게시물 제목 */
+.page-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-.comment-input{
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+/* 해시태그 목록 */
+.tag {
+  display: flex; /* 가로 배치 */
+  gap: 0.5rem; /* 태그 간 간격 */
+  margin-bottom: 1.88rem;
 }
 
-.comment-section .profile-img{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
+/* 각 해시태그 스타일 */
+.tag li {
+  padding: 0.5rem 0.75rem;
+  background-color: #ecfdf5; /* 연한 민트색 배경 */
+  border-radius: 0.17444rem; /* 모서리 둥글게 */
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #00bc7d; /* 민트색 글자 */
 }
 
-.comment-input textarea {
-    min-height: 70px;
-    padding: 12px 14px;
-    flex: 1;
-    border: 1px solid #b5bbc5;
-    border-radius: 8px;
-    font-size: 14px;
-    resize: none;
-    box-sizing: border-box;
-    outline: none;
-    color: #333;
+/* 게시물 본문 텍스트 */
+.article-text {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6a7282; /* 회색 */
+  margin-bottom: 1.88rem;
 }
 
-.comment-submit{
-    align-self: flex-end;
-    padding: 8px 18px;
-    border-radius: 8px;
-    border: none;
-    background-color: #b5bbc5;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 8px;
+/* 좋아요/댓글 버튼 영역 */
+.article-footer {
+  margin-top: 2.75rem;
+  display: flex;
+  gap: 1rem; /* 버튼 간 간격 */
 }
 
-.comment-title{
-    margin: 0 0 20px;
-    font-size: 22px;
-    font-weight: 700;
-}
-.comment-count{
-  color: #5c6679;
-}
-.comment-list{
-    margin-top: 8px;
+/* 좋아요/댓글 버튼 */
+.article-footer button {
+  display: flex;
+  align-items: center; /* 아이콘과 숫자 세로 중앙 정렬 */
+  gap: 0.25rem; /* 아이콘과 숫자 간격 */
+  color: #b5bbc5;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
-.comment-item{
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 18px 0;
-    border-top: 1px solid #eef0f3;
+/* 댓글 목록 */
+.comment {
+  display: flex;
+  flex-direction: column; /* 세로 배치 */
+  align-items: center;
+  gap: 0.5rem; /* 댓글 간 간격 */
 }
 
-.comment-item:first-child{
-    border-top: none;
-    padding-top: 8px;
+/* 댓글 아이템 구분선 */
+.comment hr {
+  width: 23.75rem;
+  border: 1px solid #eff0f1;
 }
 
-.comment-body{
-    flex: 1;
+/* 각 댓글 아이템 */
+.comment li {
+  width: 100%;
+  padding: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
-.comment-top{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
+/* 댓글 제목 */
+.comment-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.75rem;
 }
 
-.comment-meta{
-    display: flex;
-    flex-direction: column;
+/* 댓글 개수 */
+.comment-count {
+  color: #6a7282; /* 회색 */
 }
 
-.comment-author{
-    margin: 0;
-    font-size: 14px;
-    font-weight: 700;
-    color: #111;
+/* 댓글 작성 폼 */
+.comment-form {
+  display: flex;
+  flex-direction: column; /* 세로 배치 */
+  align-items: flex-end; /* 버튼을 오른쪽 정렬 */
+  gap: 1.25rem; /* 입력창과 버튼 간격 */
+  margin-bottom: 0.75rem;
 }
 
-.comment-date{
-    margin: 4px 0 0;
-    font-size: 12px;
-    color: #b7bec9;
-    font-weight: 500;
+/* 프로필 이미지 + 입력창 영역 */
+.comment-form div {
+  width: 100%;
+  display: flex;
+  align-items: flex-start; /* 위쪽 정렬 */
+  gap: 0.75rem; /* 프로필과 입력창 간격 */
 }
 
-.comment-actions{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-right: 12px;
+/* 댓글 입력창 */
+.comment-form textarea {
+  width: 100%;
+  height: 5.31rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: inherit; /* 부모 폰트 상속 */
+  border: 1px solid #b5bbc5; /* 테두리 */
+  border-radius: 0.5rem; /* 모서리 둥글게 */
+  resize: none; /* 크기 조절 비활성화 */
 }
 
-.comment-edit,
-.comment-delete{
-    border: none;
-    background: none;
-    padding: 0;
-    font-size: 13px;
-    cursor: pointer;
-    font-weight: 600;
+/* 입력창 placeholder(힌트 텍스트) 스타일 */
+.comment-form textarea::placeholder {
+  color: #b5bbc5; /* 연한 회색 */
+  font-size: 1rem;
+  font-weight: 400;
 }
 
-.comment-edit{
-    color: #8d94a0;
+/* 댓글 작성 버튼 */
+.comment-form button {
+  width: 6.25rem;
+  height: 2.19rem;
+  display: flex; /* 텍스트 중앙 정렬을 위해 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  color: #fff; /* 흰색 글자 */
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #b5bbc5; /* 회색 배경 */
+  border-radius: 0.5rem; /* 모서리 둥글게 */
 }
 
-.comment-delete{
-    color: #ee6b6e;
+/* 댓글 헤더 (작성자 정보 + 버튼) */
+.comment header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 양쪽 끝 정렬 */
+  margin-bottom: 0.62rem;
 }
 
-.comment-text{
-    margin: 8px 0 0;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #222;
-    font-weight: 400;
+/* 댓글 작성자 정보 영역 */
+.comment-header-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 프로필과 텍스트 간격 */
+}
+
+/* 댓글 작성자 이름과 날짜 */
+.comment-info {
+  display: flex;
+  flex-direction: column; /* 세로 배치 */
+  gap: 0.25rem;
+}
+
+.comment-info h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.comment-info p {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #b5bbc5; /* 연한 회색 */
+}
+
+/* 댓글 수정/삭제 버튼 영역 */
+.comment-btn {
+  display: flex;
+  gap: 0.5rem; /* 버튼 간 간격 */
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* 수정 버튼 */
+.change {
+  color: #6a7282; /* 회색 */
+}
+
+/* 삭제 버튼 */
+.delete {
+  color: #ff5558; /* 빨간색 */
+}
+
+/* 댓글 내용 */
+.comment-content {
+  padding-left: 3.25rem;
+  font-size: 1rem;
+  font-weight: 400;
 }
