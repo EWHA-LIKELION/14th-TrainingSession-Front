@@ -52,14 +52,15 @@
             </div>
             <div class="reaction">
               <img src="./images/comment.svg" />
-              <span>0</span>
+              <span id="comment_count">0</span>
             </div>
           </div>
         </footer>
       </article>
+
       <section>
         <span class="bold_text">댓글</span>
-        <span class="semibold_text">n</span>
+        <span class="semibold_text" id="comment_count">n</span>
         <form
           style="display: flex; flex-direction: column; align-items: center"
         >
@@ -102,9 +103,15 @@
               유익한 정보네요. 도움이 많이 되었습니다.
             </div>
           </div>
+          <div class="comment_edit_buttons">
+            <button class="button_edit">수정</button>
+            <button class="button_delete">삭제</button>
+          </div>
         </div>
+
         <div class="horizontal-line"></div>
       </section>
     </main>
+    <script src="post_detail.js"></script>
   </body>
 </html>
