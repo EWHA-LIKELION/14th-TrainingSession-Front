@@ -7,7 +7,7 @@ const commentInput = document.getElementById("user_comment");
 const commentSection = document.querySelector("section"); // 댓글이 추가될 영역
 const countDisplay = document.querySelectorAll("#comment_count"); // 댓글 개수 표시
 
-// 빈 댓글 등록 막기 (유효성 검사 함수)
+// 빈 댓글 등록 막기
 function validateComment(content) {
   if (content.trim() === "" || content === "댓글을 입력하세요.") {
     return false;
@@ -27,44 +27,83 @@ commentForm.addEventListener("submit", function (e) {
     return;
   }
 
-  // 2. 새 댓글 목록에 표현 (Create)
-  const newComment = document.createElement("div");
-  newComment.className = "comment_container";
-  newComment.innerHTML = `
-    <img src="./images/profile.png" />
-    <div class="comment_content">
-      <div class="profile_text">
-        <div class="nickname">likelion2026</div>
-        <div class="date">2026. 03. 19</div>
+  // 새 댓글 목록에 표현 (Create)
+  const newComment = `
+  <div class="comment">
+    <div class="comment_container">
+      <img src="./images/profile.png" />
+      <div class="comment_content">
+        <div class="profile_text">
+          <div class="nickname">likelion2026</div>
+          <div class="date">2026. DD. MM</div>
+        </div>
+        <div class="comment_text">
+          ${content}
+        </div>
       </div>
-      <div class="comment_text">${content}</div>
+      <div class="comment_edit_buttons">
+        <button class="button_edit">수정</button>
+        <button class="button_delete">삭제</button>
+      </div>
     </div>
-    <div class="comment_edit_buttons">
-      <button class="button_edit">수정</button>
-      <button class="button_delete">삭제</button>
-    </div>
+    <div class="horizontal-line"></div>
+  </div>
   `;
 
-  const line = document.createElement("div");
-  line.className = "horizontal-line";
-
   // 화면에 추가
-  commentSection.appendChild(newComment);
-  commentSection.appendChild(line);
+  // form 태그가 끝난 직후(afterend)에 이 HTML을 삽입
+  commentForm.insertAdjacentHTML("afterend", newComment);
 
-  // 3. 댓글 등록 후 입력창 비우기
   commentInput.value = "";
 
-  // 4. 댓글 개수 업데이트
+  // 댓글 등록 후 입력창 비우기
+  commentInput.value = " ";
+
+  // 댓글 개수 업데이트
   updateCommentCount();
 });
 
+// 삭제 버튼 클릭 이벤트 리스너
+commentSection.addEventListener("click", function (e) {
+  // 클릭된 요소가 삭제 버튼인지 확인
+  if (e.target.classList.contains("button_delete")) {
+    const deleteBtn = e.target;
+
+    if (confirm("댓글을 삭제하시겠습니까?")) {
+      deleteComment(deleteBtn);
+    }
+  }
+});
+
+// 댓글 삭제 함수
+function deleteComment(button) {
+  // 삭제할 댓글 찾기 (눌린 삭제 버튼과 가장 가까운 comment)
+  const commentElement = button.closest(".comment");
+
+  if (commentElement) {
+    // el.remove()를 사용하여 .comment 전체(내용 + 구분선)를 삭제
+    commentElement.remove();
+
+    // 삭제 후 상단/하단의 댓글 개수 UI 업데이트
+    updateCommentCount();
+  }
+}
+
+// 전체 댓글 개수 관리
 function updateCommentCount() {
-  // 문서 전체에서 .comment_container 클래스 개수만 가져옴
-  const currentCount = document.querySelectorAll(".comment_container").length;
+  // 문서 전체에서 .comment 클래스 개수만 가져옴
+  const currentCount = document.querySelectorAll(".comment").length;
 
   // 삼항 연산자로 업데이트
   countDisplay.forEach((display) => {
     display.textContent = currentCount ? currentCount : 0;
   });
 }
+
+// mock 데이터를 map으로 렌더링
+const tags = ["JavaScript", "HTML", "CSS", "Frontend"];
+const tagListEl = document.querySelector(".tag_list");
+
+tagListEl.innerHTML = tags
+  .map((tag) => `<li class="tag">#${tag}</li>`)
+  .join("");
