@@ -2,6 +2,19 @@ const commentCountEl = document.querySelector('.comment-count');
 const commentList = document.querySelector('.comment-list');
 const textarea = document.querySelector('.comment-write-box textarea');
 
+const tagBox = document.querySelector('.tag-box');
+const tags = ['멋쟁이사자처럼', '프론트엔드'];
+
+const tagListEl = document.querySelector('.tag-box')
+tagListEl.innerHTML = ''
+
+tags.map(tag => {
+  const li = document.createElement('li')
+  li.textContent = `#${tag}`
+  tagListEl.append(li)
+})
+
+
 function updateCommentCount() {
   const commentCount = document.querySelectorAll('.comment-list li').length;
   commentCountEl.textContent = commentCount === 0 ? "0" : commentCount;
@@ -38,6 +51,12 @@ function addComment() {
     <p class="comment-text">${text}</p>
   `;
 
+  const deleteBtn = newComment.querySelector('.delete');
+  deleteBtn.addEventListener('click', function (){
+    newComment.remove();
+    updateCommentCount();
+  });
+
 
   commentList.append(newComment);
 
@@ -46,5 +65,6 @@ function addComment() {
   updateCommentCount();
 }
 
+renderTags();
 updateCommentCount();
 

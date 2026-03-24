@@ -17,7 +17,7 @@ newItem.textContent = text
 list.append(newItem)
 
 input.value = ''
-})
+}) //입력창 초기화
 
 console.log(input)
 console.log(list)
