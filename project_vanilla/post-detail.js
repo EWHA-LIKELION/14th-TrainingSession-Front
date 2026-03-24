@@ -3,20 +3,34 @@ const commentForm = document.querySelector('.comment-form');
 const commentInput = document.querySelector('.comment-form textarea');
 const commentList = document.querySelector('.comment');
 const countDisplay = document.querySelector('.comment-count');
+const tagList = document.querySelector('.tag');
+
+// 태그 mock 데이터
+const tagData = ['여기까지', '해봤습니다'];
+
+// 태그 mock 데이터를 map으로 렌더링하기
+function renderTags(tags) {
+  tagList.innerHTML = tags
+    .map(function (tag) {
+      return `<li>#${tag}</li>`;
+    })
+    .join('');
+}
 
 // 댓글 개수 업데이트 및 삼항 연산자 활용!!!
 function updateCount() {
   // 현재 작성된 댓글(li)의 개수 가져오기
   const comments = document.querySelectorAll('.comment > li');
   const commentCount = comments.length;
+
   // 댓글이 0개일 때 -> "0", 1개 이상일 때 -> 숫자 표시
-  countDisplay.textContent = commentCount === 0 ? "0" : `${commentCount}`;
+  countDisplay.textContent = commentCount === 0 ? '0' : `${commentCount}`;
 }
 
 // 빈 댓글 등록 막기: validateComment 함수!
 function validateComment(text) {
   if (text.length === 0) {
-    alert("내용을 입력해 주세요.");
+    alert('내용을 입력해 주세요.');
     return false;
   }
   return true;
@@ -26,12 +40,13 @@ function validateComment(text) {
 commentForm.addEventListener('submit', function (e) {
   e.preventDefault(); // 새로고침 방지
 
-  const text = commentInput.value; // 입력창에 쓰여 있는 텍스트 가져오기
+  const text = commentInput.value.trim(); // 입력창 공백 제거 후 텍스트 가져오기
 
   // 검사에서 통과하지 못하면(빈 댓글이면) 함수 종료
   if (!validateComment(text)) {
     return;
   }
+
   // 새 댓글이 목록에 추가되도록 구현! (CREATE -> APPEND)
   const newComment = document.createElement('li');
 
@@ -46,8 +61,8 @@ commentForm.addEventListener('submit', function (e) {
         </div>
       </div>
       <div class="comment-btn">
-        <button class="change">수정</button>
-        <button class="delete">삭제</button>
+        <button type="button" class="change">수정</button>
+        <button type="button" class="delete">삭제</button>
       </div>
     </header>
     <p class="comment-content">${text}</p>
@@ -57,11 +72,31 @@ commentForm.addEventListener('submit', function (e) {
   commentList.append(newComment);
 
   // 댓글 등록 후 입력창 비우기!
-  commentInput.value = "";
+  commentInput.value = '';
 
   // 댓글 개수 업데이트하기!
   updateCount();
 });
+
+// 삭제 버튼 클릭하면 해당 댓글(li) 삭제하기
+commentList.addEventListener('click', function (e) {
+  if (!e.target.classList.contains('delete')) {
+    return;
+  }
+
+  const commentItem = e.target.closest('li');
+  if (!commentItem) {
+    return;
+  }
+
+  commentItem.remove();
+
+  // 댓글이 삭제된 뒤 댓글 개수 다시 세기
+  updateCount();
+});
+
+// 화면이 처음 로드될 때 태그 렌더링
+renderTags(tagData);
 
 // 화면이 처음 로드될 때 기존에 있는 댓글 개수를 세어서 표시
 updateCount();
