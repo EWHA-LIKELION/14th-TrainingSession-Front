@@ -3,7 +3,7 @@ const CommentItem = ({ author, date, content, isMyComment }) => {
     <li>
       <header>
         <div>
-          <img src="./images/profile.png" alt="profile" />
+          <img src="/images/profile.png" alt="profile" />
           <div>
             <h5>{author}</h5>
             <p>{date}</p>
@@ -11,8 +11,8 @@ const CommentItem = ({ author, date, content, isMyComment }) => {
         </div>
         {isMyComment ? (
           <div>
-            <button className="change">수정</button>
-            <button className="delete">삭제</button>
+            <button>수정</button>
+            <button>삭제</button>
           </div>
         ) : null}
       </header>

@@ -4,7 +4,7 @@ const PostArticle = () => {
   return (
     <article>
       <header>
-        <img src="./images/profile.png" alt="profile" />
+        <img src="/images/profile.png" alt="profile" />
         <div>
           <h3>likelion2026</h3>
           <p>2026.MM.DD</p>
@@ -28,14 +28,14 @@ const PostArticle = () => {
         있습니다.
       </p>
 
-      <img src="./images/photo.png" alt="photo" />
+      <img src="/images/photo.png" alt="photo" />
 
       <footer>
         <button>
-          <img src="./icons/like.svg" alt="like" />0
+          <img src="/icons/like.svg" alt="like" />0
         </button>
         <button>
-          <img src="./icons/comment.svg" alt="comment" />0
+          <img src="/icons/comment.svg" alt="comment" />0
         </button>
       </footer>
     </article>

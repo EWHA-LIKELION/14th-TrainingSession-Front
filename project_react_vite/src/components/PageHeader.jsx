@@ -8,7 +8,7 @@ const PageHeader = () => {
   };
   return (
     <header style={style}>
-      <img src="./icons/back.svg" alt="back" />
+      <img src="/icons/back.svg" alt="back" />
       <h1>{title}</h1>
     </header>
   );
