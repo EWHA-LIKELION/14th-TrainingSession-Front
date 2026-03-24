@@ -75,3 +75,37 @@ commentForm.addEventListener('submit', (e) => {
     commentInput.focus(); //보통 입력창으로 커서가 이동하니까
 
 });
+
+// 댓글 삭제 기능
+commentList.addEventListener('click', (e) => {
+    
+    // 클릭된 버튼이 삭제 버튼인지 확인
+    if (e.target.classList.contains('del-btn')) {
+        
+        // 삭제하려는 댓글 찾기...
+        const commentItem = e.target.closest('.comment-item');
+        
+        if (confirm("정말로 삭제하시겠습니까? ㅠ.ㅠ")) {
+            commentItem.remove(); // 삭제!
+            updateCommentCount(); // 숫자 새로고침!
+        }
+    }
+    else if (e.target.classList.contains('edit-btn')) {
+        const commentItem = e.target.closest('.comment-item');
+        alert("수정 기능 준비중 ~.~");
+    }
+});
+
+// tag mock 데이터 -> map으로 렌더링
+const tags = ['이화여대', '멋사'];
+const tagList = document.querySelector('.post-tags');
+
+const hashTags = tags.map(tag => 
+    `<li class="tag">#${tag}</li>`).join(''); // 태그 간 , 없애기
+
+tagList.innerHTML = hashTags;
+
+
+
+
+
