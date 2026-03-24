@@ -31,7 +31,7 @@ const CommentSection = () => {
 
       <form action="submit_url">
         <div>
-          <img src="./images/profile.png" alt="profile" />
+          <img src="/images/profile.png" alt="profile" />
           <textarea
             // onChange={(e) => {
             //   comment = e.target.value;
