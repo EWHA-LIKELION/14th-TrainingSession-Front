@@ -1,6 +1,6 @@
-import PageHeader from './components/PageHeader'; 
-import PostArticle from './PostArticle'; 
-import CommentSection from './CommentSection'; 
+import PageHeader from '../../components/PageHeader';
+import PostArticle from './PostArticle';
+import CommentSection from './CommentSection';
 
 function PostDetailPage() {
   return (
