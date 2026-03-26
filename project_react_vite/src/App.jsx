@@ -1,16 +1,11 @@
-import PageHeader from "./components/PageHeader";
-import PostArticle from "./pages/PostArticle";
-import CommentSection from "./pages/CommentSection";
+
+import PostDetailPage from './pages/post-detail/PostDetailPage';
 
 function App() {
 
   return (
     <>
-      <PageHeader />
-      <main>
-        <PostArticle />
-        <CommentSection />
-      </main>
+      <PostDetailPage />  { /*import만 하지 말고 return에 적어주는 것 잊지 말기*/ }
     </>
   );
 
