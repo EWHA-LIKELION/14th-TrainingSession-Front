@@ -1,5 +1,5 @@
-import CommentItem from "./Commentltem";
-import { useState } from "react";
+import CommentItem from "./CommentItem";
+import { useState, useEffect } from "react";
 
 const comments = [
     {
@@ -18,34 +18,42 @@ const comments = [
     },
 ];
 
-const CommentSection = () => {
+const CommentSection = ({ postId }) => {
     const [comment, setComment] = useState("");
+    const [commentList, setCommentList] = useState(comments);
+
+    useEffect(() => {
+        console.log("현재 글자 수:", comment.length);
+    }, [comment]);
 
     return (
         <section>
             <h3>
-                댓글 <span id="comment-count">0</span>
+                댓글 <span>{commentList.length}</span>
             </h3>
+
             <div>
                 <img src="/images/profile.png" />
                 <textarea 
+                    value = {comment}
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="댓글을 입력하세요"
-                    required
-                ></textarea>
-            </div>   
-            <button disabled={comment.length === 0} type="submit">
+                />
+            </div> 
+
+            <div>{comment.length} / 100</div>  
+            <button disabled={comment.length === 0}>
                 댓글 작성
             </button>
 
             <ul>
-                {comments. map ((comment) => (      
+                {commentList.map((c) => (      
                     <CommentItem
-                        key={comment.id}
-                        author={comment.author}
-                        date={comment.date}
-                        content={comment.content}
-                        isMyComment={comment.isMyComment}
+                        key={c.id}
+                        author={c.author}
+                        date={c.date}
+                        content={c.content}
+                        isMyComment={c.isMyComment}
                     />
                 ))}
             </ul>
