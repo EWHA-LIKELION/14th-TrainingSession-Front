@@ -4,11 +4,9 @@ import PostDetailPage from './pages/post-detail/PostDetailPage';
 function App() {
 
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/post/:id" element={<PostDetailPage />} /> {/* Routing 실습: /post 경로로 접속하면 PostDetailPage 컴포넌트가 렌더링되도록 설정 */}
       </Routes>
-    </BrowserRouter>
   );
 
 }
