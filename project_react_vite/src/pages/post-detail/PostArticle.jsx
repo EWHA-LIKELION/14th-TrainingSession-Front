@@ -1,9 +1,15 @@
 const tags = ["#태그", "#태그"];
+const posts = [
+    { id: "1", title: "HTML & CSS 심화 과제"},
+    { id: "2", title: "React Hook 정리"},
+];
 
-const PostArticle = () => {
+const PostArticle = ({ id }) => {
+    const post = posts.find((p) => p.id === id); // posts 배열에서 id가 일치하는 게시물을 찾음
     return (
         <article>
-
+            {/*title 연결*/}
+            <h1>{post?.title}</h1> {/* post가 존재할 때 title을 보여줌. "?"를 쓰는 이유: 타이틀이 없을 수도 있다! */}
             <header>
                 <div>
                     <img src="/images/profile.png" alt="프로필 사진" />

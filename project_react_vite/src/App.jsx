@@ -1,12 +1,14 @@
-
+import { Routes, Route } from 'react-router-dom'; // BrowserRouter는 main.jsx에서!
 import PostDetailPage from './pages/post-detail/PostDetailPage';
 
 function App() {
 
   return (
-    <>
-      <PostDetailPage />  { /*import만 하지 말고 return에 적어주는 것 잊지 말기*/ }
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/post/:id" element={<PostDetailPage />} /> {/* Routing 실습: /post 경로로 접속하면 PostDetailPage 컴포넌트가 렌더링되도록 설정 */}
+      </Routes>
+    </BrowserRouter>
   );
 
 }
