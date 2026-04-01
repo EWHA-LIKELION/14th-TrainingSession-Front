@@ -1,8 +1,14 @@
-const tags = ["#태그", "#태그"];
-
 const posts = [
-  { id: "1", title: "HTML & CSS 심화 과제" },
-  { id: "2", title: "React Hook 정리" },
+  {
+    id: "1",
+    title: "훅에 대해서 알아보자. 첫 번째 페이지 연결!",
+    tags: ["#첫번째 태그는", "#이렇습니다"],
+  },
+  {
+    id: "2",
+    title: "두 번째 페이지 연결하기~",
+    tags: ["#두번째 태그는", "#이렇게 바뀝니다"],
+  },
 ];
 const PostArticle = ({ id }) => {
   const post = posts.find((p) => p.id === id);
@@ -20,7 +26,7 @@ const PostArticle = ({ id }) => {
       <h1>{post?.title}</h1>
       {/*해시태그 목록*/}
       <ul>
-        {tags.map((tag, index) => (
+        {post?.tags.map((tag, index) => (
           <li key={index}>{tag}</li>
         ))}
       </ul>
