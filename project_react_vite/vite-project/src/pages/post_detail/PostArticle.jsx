@@ -1,9 +1,15 @@
 const tags = ["#태그", "#태그"];
+const posts = [
+  { id: "1", title: "HTML & CSS 심화 과제" },
+  { id: "2", title: "React Hook 정리" },
+];
 
-const PostArticle = () => {
+const PostArticle = ({ id }) => {
+  const post = posts.find((p) => p.id === id);
   return (
     <article>
       <header>
+        <h1>{post?.title}</h1>
         <div>
           <img src="./images/profile.png" />
           <div>
