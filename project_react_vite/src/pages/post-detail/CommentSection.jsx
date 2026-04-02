@@ -16,10 +16,17 @@ isMyComment: false,
 },
 ];
 
-import { useState } from "react";
+import { use, useState } from "react";
+import { useEffect } from "react";
+
+
 
 const CommentSection = () => {
     const [comment, setComment] = useState("");
+    useEffect(() => {
+        console.log("현재 글자 수:", comment.length);
+    }, [comment]);
+    
     return (
         <section>
             <div>
@@ -31,9 +38,12 @@ const CommentSection = () => {
                 <div>
                     <img src="/images/profile.png" alt="profile" />
                     <textarea 
+                    value = {comment} // hooks 실습1: hook으로 관리하는 comment 상태값을 textarea의 value로 설정
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="댓글을 입력하세요." required>
                     </textarea>
+                    <div>{comment.length}/100</div> {/* hooks 실습2: 글자 수 제한 100자라고 가정 */}
+                    
                 </div>
                 <button type="submit">댓글 작성</button>
             </form>
