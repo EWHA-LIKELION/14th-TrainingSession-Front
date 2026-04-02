@@ -1,6 +1,12 @@
 const tags = ["#태그", "#태그"];
+const posts = [
+    {id: "1", title: "HTML & CSS 심화 과제"},
+    {id: "2", title: "Reaact Hook 정리"},
+];
 
-const PostArticle = () => {
+const PostArticle = ({id}) => {
+    const post = posts.find((p) => p.id === id);
+
     return (
         <article>
             <header  class="container"> 
@@ -10,7 +16,7 @@ const PostArticle = () => {
                     <p>2026.MM.DD</p>  
                 </div>
             </header> 
-                <h1 class="post-title">게시물 제목입니다.</h1>
+                <h1>{post?.title}</h1>
                 <ul class="tag-box">
                 </ul>
                 <ul>

@@ -1,12 +1,6 @@
 import CommentItem from "./CommentItem";
-import {useState} from "react";
-
-
-
-const CommentSection = () => {
-    const [comment, setComment] = useState("");
-
-    const comments =   [
+import {useEffect, useState} from "react";
+  const comments =   [
        { id: 1,
         author: "likelion2026",
         date: "2026.03.01.18:36",
@@ -22,19 +16,29 @@ const CommentSection = () => {
         isMyComment: false,
     }
 ];
+
+
+const CommentSection = () => {
+    const [comment, setComment] = useState("");
+useEffect(() => {
+    console.log("현재 글자 수:", comment.length);
+},[comment]);
+  
     return (
         <section>
         <div className="comment-title">
             댓글
          <span className="comment-count">n</span>
-</div>
+</div> 
     <form action="submit_url" class="comment-write-box">
             <div>
                 <img src="./images/profile.png" alt="profile" />
             <textarea 
+                    value={comment}
                     onChange={(e) => setComment(e.target.value)}
             placeholder="댓글을 입력하세요." required></textarea>
-            </div>
+            {comment.length}/100
+            </div> 
           <button disabled={comment.length === 0} type="submit">댓글 작성</button>
         </form>
 
