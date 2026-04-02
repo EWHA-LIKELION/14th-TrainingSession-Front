@@ -1,4 +1,5 @@
 import CommentItem from "./CommentItem";
+import { useEffect, useState } from "react";
 
 //mock data (실제 서버에서 받아올 데이터를 임시로 흉내낸 것)
 const comments = [
@@ -19,11 +20,11 @@ const comments = [
   },
 ];
 
-import { useState } from "react";
-
 const CommentSection = () => {
   const [comment, setComment] = useState("");
-
+  useEffect(() => {
+    console.log("현재 글자 수:", comment.length);
+  }, [comment]);
   return (
     <section>
       <div>
@@ -35,10 +36,12 @@ const CommentSection = () => {
         <div>
           <img src="/images/profile.png" alt="profile" />
           <textarea
+            value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="댓글을 입력하세요."
             required
           ></textarea>
+          <div>{comment.length} / 100</div>
         </div>
         <button disabled={comment.length === 0} type="submit">
           댓글 작성
