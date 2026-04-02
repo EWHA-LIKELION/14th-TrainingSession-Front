@@ -7,7 +7,7 @@ const CommentItem = ({
       <li>
         <header>
           <div>
-            <img src="./images/profile.png" alt="profile" />
+            <img src="/images/profile.png" alt="profile" />
             <div>
               <h5>{author}</h5>
               <p>{date}</p>

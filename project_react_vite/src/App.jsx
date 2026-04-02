@@ -1,16 +1,15 @@
-import PageHeader from "./components/PageHeader";
+import { Routes, Route } from 'react-router-dom';
 import PostDetailPage from "./pages/post-detail/PostDetailPage";
 
 function App() {
 
   return (
-    <>
-      <PageHeader />
-      <main>
-        <PostDetailPage />
-      </main>
-    </>
+
+      <Routes>
+        <Route path = "/post/:id" element={<PostDetailPage />} />
+      </Routes>
+   
   )
 }
 
-export default App
+export default App;
