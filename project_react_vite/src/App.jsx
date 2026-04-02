@@ -1,20 +1,15 @@
-import PageHeader from "./components/PageHeader";
-import PostArticle from "./components/pages/PostArticle";
-import CommentSection from "./components/pages/post-detail/CommentSection";
+import PostDetailPage from "./pages/post-detail/PostDetailPage";
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+
 
 function App() {
-  
-
   return (
   
-    <>
-     <PageHeader />
-     <main>
-      <PostArticle />
-      <CommentSection />
-     </main>
-    </>
+      <Routes>
+        <Route path ="/post/:id" element={<PostDetailPage/>}/>
+      </Routes>
+ 
   );
 }
 
-export default App
+export default App;
