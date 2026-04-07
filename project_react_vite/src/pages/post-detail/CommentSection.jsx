@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CommentItem from "./CommentItem";
 
 const comments = [
@@ -22,6 +22,11 @@ const CommentSection = () => {
   // let comment = "";
   const [comment, setComment] = useState("");
 
+  //comment가 바뀔 때마다 실행
+  useEffect(() => {
+    console.log("현재 글자 수:", comment.length);
+  }, [comment]);
+
   return (
     <section>
       <div>
@@ -33,6 +38,7 @@ const CommentSection = () => {
         <div>
           <img src="/images/profile.png" alt="profile" />
           <textarea
+            value={comment}
             // onChange={(e) => {
             //   comment = e.target.value;
             // }}
@@ -40,6 +46,7 @@ const CommentSection = () => {
             placeholder="댓글을 입력하세요."
             required
           ></textarea>
+          <div>{comment.length} / 100</div>
         </div>
         <button disabled={comment.length === 0} type="submit">
           댓글 작성

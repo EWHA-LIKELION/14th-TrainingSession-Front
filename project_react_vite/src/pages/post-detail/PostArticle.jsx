@@ -1,6 +1,13 @@
 const tags = ["#태그", "#태그"];
 
-const PostArticle = () => {
+const posts = [
+  { id: "1", title: "HTML & CSS 심화 과제" },
+  { id: "2", title: "React Hook 정리" },
+];
+
+const PostArticle = ({ id }) => {
+  const post = posts.find((p) => p.id === id);
+
   return (
     <article>
       <header>
@@ -11,7 +18,7 @@ const PostArticle = () => {
         </div>
       </header>
 
-      <h1>게시물 제목입니다.</h1>
+      <h1>{post?.title}</h1>
 
       <ul>
         {tags.map((tag, index) => (
