@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시물 상세 조회</title>
+    <link rel="stylesheet" href="post-detail.css" />
+  </head>
+  <body>
+    <!-- 상단 고정 헤더 - 뒤로가기 버튼과 타이틀 -->
+    <header class="page-header">
+      <img src="./images/back.svg" alt="back" />
+      <h1>목록으로</h1>
+    </header>
+    <main>
+      <!-- 게시물 영역 -->
+      <article>
+        <!-- 게시물 작성자 정보 -->
+        <header class="article-header">
+          <img src="./images/profile.png" alt="profile" />
+          <div class="post-info">
+            <h3>likelion2026</h3>
+            <p>2026.MM.DD</p>
+          </div>
+        </header>
+        <!-- 게시물 제목 -->
+        <h1 class="page-title">게시물 제목입니다.</h1>
+        <!-- 해시태그 목록 -->
+        <ul class="tag">
+          <li>#태그</li>
+          <li>#태그</li>
+        </ul>
+        <!-- 게시물 본문 -->
+        <p class="article-text">
+          이것은 본문입니다. 여기에 더 많은 텍스트가 들어갈 수 있습니다.
+          게시물의 내용은 여러 단락으로 구성될 수 있으며, 다양한 주제에 대해
+          이야기할 수 있습니다.
+          <br />
+          <br />
+          두 번째 단락입니다. 여기에는 더 많은 정보와 세부 사항이 포함될 수
+          있습니다.
+        </p>
+        <!-- 게시물 이미지 -->
+        <img src="./images/photo.png" alt="photo" />
+        <!-- 좋아요/댓글 버튼 영역 -->
+        <footer class="article-footer">
+          <button>
+            <img src="./images/like.svg" alt="like" />
+            0
+          </button>
+          <button>
+            <img src="./images/comment.svg" alt="comment" />
+            0
+          </button>
+        </footer>
+      </article>
+      <!-- 댓글 영역 -->
+      <section>
+        <!-- 댓글 제목과 개수 -->
+        <div class="comment-title">
+          댓글
+          <span class="comment-count">n</span>
+        </div>
+        <!-- 댓글 작성 폼 -->
+        <form action="submit_url" class="comment-form">
+          <div>
+            <img src="./images/profile.png" alt="profile" />
+            <textarea placeholder="댓글을 입력하세요." required></textarea>
+          </div>
+          <button type="submit">댓글 작성</button>
+        </form>
+        <!-- 댓글 목록 -->
+        <ul class="comment">
+          <!-- 첫 번째 댓글 -->
+          <li>
+            <header>
+              <div class="comment-header-info">
+                <img src="./images/profile.png" alt="profile" />
+                <div class="comment-info">
+                  <h5>likelion2026</h5>
+                  <p>2026. 03. 01. 18:36</p>
+                </div>
+              </div>
+              <div class="comment-btn">
+                <button class="change">수정</button>
+                <button class="delete">삭제</button>
+              </div>
+            </header>
+            <p class="comment-content">
+              유익한 정보네요. 도움이 많이 되었습니다.
+            </p>
+          </li>
+          <hr />
+          <!-- 두 번째 댓글 -->
+          <li>
+            <header>
+              <div class="comment-header-info">
+                <img src="./images/profile.png" alt="profile" />
+                <div class="comment-info">
+                  <h5>likelion2026</h5>
+                  <p>2026. 03. 01. 12:48</p>
+                </div>
+              </div>
+              <div class="comment-btn">
+                <button class="change">수정</button>
+                <button class="delete">삭제</button>
+              </div>
+            </header>
+            <p class="comment-content">좋은 글 감사합니다!</p>
+          </li>
+          <hr />
+        </ul>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
