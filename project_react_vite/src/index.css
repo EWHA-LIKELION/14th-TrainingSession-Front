@@ -1,1 +1,16 @@
+@import "tailwindcss";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
 
+@theme {
+ --font-pretendard: 'Pretendard Variable', 'Pretendard', system-ui, -apple-system, BlinkMacSystemFont;
+
+ --color-main-1: #00BC7D;
+ --color-main-2: #ECFDF5;
+ --color-grey-1: #6A7282;
+ --color-grey-2: #B5BBC5;
+ --color-grey-3: #EFF0F1;
+ --color-grey-4: #F9FAFB;
+ --color-error: #FF5558;
+
+
+}
