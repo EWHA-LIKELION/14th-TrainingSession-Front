@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentItem from "./CommmentItem"
+import CommentItem from "./CommentItem"
 import { useState, useEffect } from "react";
 
 
