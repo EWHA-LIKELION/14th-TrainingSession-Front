@@ -26,29 +26,48 @@ const CommentSection = () => {
     console.log("현재 글자 수:", comment.length);
   }, [comment]);
   return (
-    <section>
-      <div>
-        댓글
-        <span>n</span>
+    <section className="flex w-full flex-col gap-7 rounded-lg bg-white p-7.5">
+      <div className="flex items-center gap-1 text-2xl font-semibold leading-8 text-black">
+        <span>댓글</span>
+        <span className="text-2xl font-semibold leading-8 text-gray-1">
+          {comments.length}
+        </span>
       </div>
 
-      <form action="submit_url">
-        <div>
-          <img src="/images/profile.png" alt="profile" />
-          <textarea
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder="댓글을 입력하세요."
-            required
-          ></textarea>
-          <div>{comment.length} / 100</div>
+      <form action="submit_url" className="flex flex-col gap-3">
+        <div className="flex items-start gap-3">
+          <img
+            src="/images/profile.png"
+            alt="profile"
+            className="mt-1 h-11.25 w-11.25 shrink-0 rounded-full object-cover"
+          />
+
+          <div className="flex flex-1 items-center rounded-lg border border-gray-2 px-4 py-3">
+            <textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="댓글을 입력하세요."
+              required
+              maxLength={100}
+              className="h-15.25 flex-1 resize-none bg-transparent text-sm text-black outline-none placeholder:text-gray-2"
+            ></textarea>
+          </div>
         </div>
-        <button disabled={comment.length === 0} type="submit">
-          댓글 작성
-        </button>
+
+        <div className="flex items-center justify-between">
+          <div className="text-sm font-medium text-gray-2">{comment.length} / 100</div>
+
+          <button
+            disabled={comment.length === 0}
+            type="submit"
+            className="flex h-[35px] items-center justify-center rounded-lg bg-gray-2 px-5 text-sm font-semibold leading-none text-white whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-100"
+          >
+            댓글 작성
+          </button>
+        </div>
       </form>
 
-      <ul>
+      <ul className="flex w-full flex-col gap-0">
         {comments.map((comment) => (
           <CommentItem
             key={comment.id}

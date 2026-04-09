@@ -8,9 +8,11 @@ function PostDetailPage() {
   return (
     <>
       <PageHeader />
-      <main>
-        <PostArticle id={id} />
-        <CommentSection />
+      <main className="min-h-screen bg-gray-4 flex flex-col items-center px-4 py-6">
+        <div className="flex w-full max-w-[751px] flex-col gap-[45px]">
+          <PostArticle id={id} />
+          <CommentSection />
+        </div>
       </main>
     </>
   );
