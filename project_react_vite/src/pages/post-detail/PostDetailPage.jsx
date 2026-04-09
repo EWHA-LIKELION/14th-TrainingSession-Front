@@ -9,7 +9,7 @@ function PostDetailPage() {
     return (
         <>
             <PageHeader />
-            <main>
+            <main className="max-w-[811px] mx-auto px-[30px] pt-[45px] pb-[30px] flex flex-col gap-10">
                 <PostArticle id={id} />
                 <CommentSection postId={id} />
             </main>
