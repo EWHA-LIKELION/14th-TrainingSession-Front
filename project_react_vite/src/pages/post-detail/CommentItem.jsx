@@ -21,7 +21,7 @@ const CommentItem = ({
                             </div>
                         ) : null}
                     </div>
-                    <p className="max-w-[680px] self-stretch text-black text-base font-normal leading-5">{content}</p>
+                    <p className="max-w-[680px] self-stretch text-base text-black font-normal leading-5">{content}</p>
                 </div>
             </div>
             <div className="w-[380px] h-px bg-gray-3 mx-auto" />
