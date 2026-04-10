@@ -8,7 +8,7 @@ function PostDetailPage() {
   return (
     <>
       <PageHeader />
-      <main>
+      <main className="bg-White inline-flex max-w-[751px] flex-col items-start justify-center gap-3 overflow-hidden rounded-lg p-7">
         <PostArticle id={id} />
         <CommentSection />
       </main>

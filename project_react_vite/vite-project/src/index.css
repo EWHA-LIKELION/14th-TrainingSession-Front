@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import url("https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css");
+
+@layer base {
+  textarea {
+    @apply resize-none border-none bg-transparent outline-none;
+  }
+  button {
+    @apply resize-none border-none bg-transparent leading-none outline-none;
+  }
+}
+
+@theme {
+  --font-pretendard:
+    "Pretendard Variable", "Pretendard", system-ui, -apple-system,
+    BlinkMacSystemFont;
+
+  /* Semantic Color */
+
+  --color-Main-1: #00bc7d;
+  --color-Main-2: #ecfdf5;
+  --color-Gray-1: #6a7282;
+  --color-Gray-2: #b5bbc5;
+  --color-Gray-3: #eff0f1;
+  --color-Gray-4: #f9fafb;
+  --color-Error: #ff5558;
+}
