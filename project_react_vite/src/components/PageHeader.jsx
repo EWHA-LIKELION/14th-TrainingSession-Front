@@ -1,14 +1,10 @@
 const PageHeader = () => {
-    const style = {
-        display: "flex",
-        backgroundColor: "green",
-        color: "white",
-        fontSize: "25",
-    };
     return (
-        <header style={style}>
-            <img src="/icons/back.svg" alt="back" />
-            <h1>목록으로</h1>
+        <header className="flex items-center w-full h-[65px] px-[263px] justify-center bg-white">
+            <div className="flex items-center gap-2 w-full max-w-[751px]">
+                <img src="/icons/back.svg" alt="back" />
+                <h1 className="text-black text-base font-medium">목록으로</h1>
+            </div>
         </header>
     );
 };
