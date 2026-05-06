@@ -31,7 +31,7 @@ const CommentSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    showToast("로그인 후 댓글을 입력할 수 있어요", "warn");
+    showToast("로그인 후 댓글을 입력할 수 있어요", "alert");
   };
 
   return (
