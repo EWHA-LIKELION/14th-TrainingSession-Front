@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CommentItem from "./CommentItem";
+import useToastStore from "../../store/useToastStore";
 
 const comments = [
   {
@@ -21,11 +22,17 @@ const comments = [
 const CommentSection = () => {
   // let comment = "";
   const [comment, setComment] = useState("");
+  const showToast = useToastStore((state) => state.showToast);
 
   //comment가 바뀔 때마다 실행
   useEffect(() => {
     console.log("현재 글자 수:", comment.length);
   }, [comment]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    showToast("로그인 후 댓글을 입력할 수 있어요", "warn");
+  };
 
   return (
     <section className="flex w-187.75 flex-col items-start gap-7 rounded-lg bg-white p-7.5">
@@ -35,7 +42,7 @@ const CommentSection = () => {
       </div>
 
       <form
-        action="submit_url"
+        onSubmit={handleSubmit}
         className="flex flex-col items-end justify-center gap-5 self-stretch"
       >
         <div className="flex items-start gap-3 self-stretch">
@@ -62,7 +69,7 @@ const CommentSection = () => {
           <button
             disabled={comment.length === 0}
             type="submit"
-            className="bg-gray-2 flex items-center justify-center rounded-lg px-5 py-1.5 text-center text-base font-semibold text-white"
+            className={`flex items-center justify-center rounded-lg px-5 py-1.5 text-center text-base font-semibold text-white ${comment.length === 0 ? "bg-gray-2" : "bg-[#00BC7D]"}`}
           >
             댓글 작성
           </button>
