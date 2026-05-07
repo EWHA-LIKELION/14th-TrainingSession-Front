@@ -10,9 +10,11 @@ const CommentItem = ({ author, date, content, isMyComment }) => {
           />
 
           <div className="flex flex-col gap-1">
-            <h5 className="text-base font-semibold leading-5 text-black">{author}</h5>
-            <p className="text-xs font-medium leading-4 text-gray-2">{date}</p>
-            <p className="max-w-[556px] text-base font-normal leading-5 text-black mt-2 mb-4">
+            <h5 className="text-base leading-5 font-semibold text-black">
+              {author}
+            </h5>
+            <p className="text-gray-2 text-xs leading-4 font-medium">{date}</p>
+            <p className="mt-2 mb-4 max-w-[556px] text-base leading-5 font-normal text-black">
               {content}
             </p>
           </div>
@@ -20,12 +22,16 @@ const CommentItem = ({ author, date, content, isMyComment }) => {
 
         {isMyComment ? (
           <div className="flex items-center gap-2">
-            <button className="text-sm font-medium leading-4 text-gray-1">수정</button>
-            <button className="text-sm font-medium leading-4 text-error">삭제</button>
+            <button className="text-gray-1 text-sm leading-4 font-medium">
+              수정
+            </button>
+            <button className="text-error text-sm leading-4 font-medium">
+              삭제
+            </button>
           </div>
         ) : null}
       </header>
-      <div className="mx-auto h-px w-[60%] bg-gray-3"></div>
+      <div className="bg-gray-3 mx-auto h-px w-[60%]"></div>
     </li>
   );
 };
