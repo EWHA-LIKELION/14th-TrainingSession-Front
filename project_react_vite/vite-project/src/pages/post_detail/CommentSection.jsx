@@ -1,5 +1,6 @@
 import CommentItem from "./CommentItem";
 import { useEffect, useState } from "react";
+import { useToastStore } from "../../Store/useToastStore";
 
 const comments = [
   {
@@ -19,24 +20,32 @@ const comments = [
   },
 ];
 const CommentSection = () => {
+  const showToast = useToastStore((state) => state.showToast);
+
   const [comment, setComment] = useState("");
 
   useEffect(() => {
     console.log("현재 글자 수:", comment.length);
   }, [comment]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 폼 제출 후 페이지 새로고침 발생되는 것 막음
+    console.log("sss");
+    showToast("alert", "로그인 후 입력하세요");
+  };
+
   return (
-    <section className="mx-auto w-full max-w-[690px]">
+    <section className="mx-auto w-full">
       <div className="justify-center">
-        <span class="text-Black font-['Pretendard'] text-2xl leading-8 font-semibold">
+        <span className="text-Black font-['Pretendard'] text-2xl leading-8 font-semibold">
           댓글
         </span>
         <span className="gap-2"> </span>
-        <span class="text-Gray-1 font-['Pretendard'] text-2xl leading-8 font-semibold">
+        <span className="text-Gray-1 font-['Pretendard'] text-2xl leading-8 font-semibold">
           n
         </span>
       </div>
-      <form className="flex-1 gap-2 p-2">
+      <form onSubmit={handleSubmit} className="flex-1 gap-2 p-2">
         <div className="flex flex-row gap-2">
           <img src="/images/profile.png" className="h-11 w-11 rounded-full" />
           <div className="border-Gray-2 flex items-center justify-start self-stretch rounded-lg border px-4 py-3">
@@ -55,6 +64,7 @@ const CommentSection = () => {
             disabled={comment.length === 0}
             type="submit"
             className="bg-Gray-2 flex h-9 items-center justify-center gap-2.5 overflow-hidden rounded-lg px-5 py-3 text-white"
+            //onClick={handleSubmit}
           >
             댓글 작성
           </button>
