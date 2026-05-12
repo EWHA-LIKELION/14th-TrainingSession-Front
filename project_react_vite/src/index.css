@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@import url("https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css");
+
+@theme {
+  /* =====================
+	     Font Families
+	  ===================== */
+  --font-pretendard:
+    "Pretendard Variable", "Pretendard", system-ui, -apple-system,
+    BlinkMacSystemFont;
+  /* =====================
+     Colors
+  ===================== */
+  --color-main-1: #00bc7d;
+  --color-main-2: #ecfdf5;
+  --color-gray-1: #6a7282;
+  --color-gray-2: #b5bbc5;
+  --color-gray-3: #eff0f1;
+  --color-gray-4: #f9fafb;
+  --color-error: #ff5558;
+}
+
+html {
+  font-family: var(--font-pretendard);
+  background: var(--color-gray-4);
+}
