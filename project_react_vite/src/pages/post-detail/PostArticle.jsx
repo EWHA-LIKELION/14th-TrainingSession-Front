@@ -1,20 +1,4 @@
-const posts = [
-  {
-    id: "1",
-    title: "HTML & CSS 심화 과제",
-    content: "이것은 HTML & CSS 내용입니다.",
-    tags: ["HTML", "CSS"],
-  },
-  {
-    id: "2",
-    title: "React & Hook 정리",
-    content: "React & Hook 내용입니다.",
-    tags: ["React", "Hook"],
-  },
-];
-
-const PostArticle = ({ id }) => {
-  const post = posts.find((p) => p.id === id);
+const PostArticle = ({ post }) => {
   return (
     <div className="flex w-[751px] flex-col items-start gap-5 rounded-lg bg-white p-[30px]">
       <div className="flex items-center gap-3">
@@ -28,7 +12,7 @@ const PostArticle = ({ id }) => {
             likelion2026
           </span>
           <span className="text-gray-2 self-stretch text-xs leading-4 font-medium">
-            2026.MM.DD
+            {post?.date && new Date(post.date).toLocaleDateString()}
           </span>
         </div>
       </div>
@@ -39,7 +23,7 @@ const PostArticle = ({ id }) => {
         </h1>
 
         <ul className="mb-[30px] flex gap-2">
-          {post.tags.map((tag, index) => (
+          {post?.tags?.map((tag, index) => (
             <li
               key={index}
               className="bg-main-2 text-main-1 flex items-center gap-1 rounded px-3 py-2 text-sm"
@@ -50,7 +34,7 @@ const PostArticle = ({ id }) => {
         </ul>
 
         <p className="text-gray-1 mb-[30px] self-stretch text-base leading-5 font-normal">
-          {post.content}
+          {post?.body}
         </p>
 
         <img
