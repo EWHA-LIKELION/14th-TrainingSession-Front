@@ -1,13 +1,6 @@
 const tags = ["#태그", "#태그"];
 
-const posts = [
-  { id: "1", title: "HTML & CSS 심화 과제" },
-  { id: "2", title: "React Hook 정리" },
-];
-
-const PostArticle = ({ id }) => {
-  const post = posts.find((p) => p.id === id);
-
+const PostArticle = ({ post }) => {
   return (
     <article className="flex w-187.75 flex-col items-start rounded-lg bg-white p-7.5">
       <header className="flex flex-row gap-2">
@@ -20,7 +13,9 @@ const PostArticle = ({ id }) => {
           <h3 className="text-center text-base font-semibold text-black">
             likelion2026
           </h3>
-          <p className="text-gray-2 font- self-stretch text-xs">2026.MM.DD</p>
+          <p className="text-gray-2 font- self-stretch text-xs">
+            {post?.date && new Date(post.date).toLocaleDateString()}
+          </p>
         </div>
       </header>
 
@@ -40,12 +35,7 @@ const PostArticle = ({ id }) => {
       </ul>
 
       <p className="text-gray-1 mt-7.5 self-stretch text-base font-normal">
-        이것은 본문입니다. 여기에 더 많은 텍스트가 들어갈 수 있습니다. 게시물의
-        내용은 여러 단락으로 구성될 수 있으며, 다양한 주제에 대해 이야기할 수
-        있습니다.
-        <br />
-        <br />두 번째 단락입니다. 여기에는 더 많은 정보와 세부 사항이 포함될 수
-        있습니다.
+        {post?.body}
       </p>
 
       <img
