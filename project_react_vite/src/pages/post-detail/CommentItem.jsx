@@ -37,7 +37,7 @@ const CommentItem = ({
       </p>
 
       {showDivider && (
-        <div className="w-[380px] h-[1px] bg-gray-3 my-2.5 self-center"></div>
+        <div className="w-95 h-0.5 bg-gray-3 my-2.5 self-center"></div>
       )}
     </li>
   );
