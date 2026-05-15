@@ -2,6 +2,7 @@ import CommentItem from "./CommentItem";
 import { useState, useEffect } from "react";
 import { useToastStore } from "../../store/useToastStore";
 
+// 구조 분해 할당
 const CommentSection = ({ comments }) => {
   const [comment, setComment] = useState("");
   useEffect(() => {
@@ -22,7 +23,9 @@ const CommentSection = ({ comments }) => {
         {/* 댓글 텍스트 */}
         <h2 className="text-2xl font-semibold leading-8 text-black">댓글</h2>
         {/* 댓글 수 n */}
-        <span className="text-2xl font-semibold leading-8 text-gray-1">2</span>
+        <span className="text-2xl font-semibold leading-8 text-gray-1">
+          {comments?.length || 0}
+        </span>
       </div>
 
       <form
