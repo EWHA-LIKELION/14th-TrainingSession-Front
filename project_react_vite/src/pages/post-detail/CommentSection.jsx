@@ -3,24 +3,7 @@ import CommentItem from "./CommentItem";
 import { useState, useEffect } from "react";
 import useToastStore from "../../store/useToastStore";
 
-const comments = [
-  {
-    id: 1,
-    author: "likelion2026",
-    date: "2026. 03. 01. 18:36",
-    content: "유익한 정보네요. 도움이 많이 되었습니다.",
-    isMyComment: true,
-  },
-  {
-    id: 2,
-    author: "likelion2026",
-    date: "2026. 03. 01. 12:48",
-    content: "좋은 글 감사합니다!",
-    isMyComment: false,
-  },
-];
-
-function CommentSection() {
+function CommentSection({ comments }) {
   const showToast = useToastStore((state) => state.showToast);
 
   const handleSubmit = (e) => {
@@ -38,7 +21,7 @@ function CommentSection() {
         <div className="font-pretendard text-2xl leading-8 font-semibold text-black">
           댓글{" "}
           <span className="text-grey-1 font-pretendard text-2xl leading-8 font-semibold">
-            n
+            {comments?.length ?? 0}
           </span>
         </div>
 
@@ -74,13 +57,13 @@ function CommentSection() {
       </div>
 
       <ul className="flex w-full flex-col items-center gap-2 self-stretch">
-        {comments.map((comment, index) => (
+        {comments?.map((comment, index) => (
           <React.Fragment key={comment.id}>
             <CommentItem
               key={comment.id}
-              author={comment.author}
-              date={comment.date}
-              content={comment.content}
+              author={comment.username}
+              date={new Date(comment.created_at).toLocaleDateString()}
+              content={comment.comment_text}
               isMyComment={comment.isMyComment}
             />
             {index !== comments.length - 1 && (

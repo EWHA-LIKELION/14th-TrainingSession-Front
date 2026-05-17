@@ -1,25 +1,6 @@
 import { useState } from "react";
-const posts = [
-  {
-    id: "1",
-    title: "HTML & CSS 심화 과제",
-    content: "맥날 감튀 먹고싶다",
-    author: "아기사자",
-    date: "2026.03.31",
-    tags: ["HTML", "CSS", "맥도날드"],
-  },
-  {
-    id: "2",
-    title: "React Hook 정리",
-    content: "멋사 파이팅 멋사 사랑해",
-    author: "멋쟁이사자",
-    date: "2026.04.01",
-    tags: ["React", "멋쟁이사자처럼", "아자뵤"],
-  },
-];
 
-const PostArticle = ({ id }) => {
-  const post = posts.find((p) => Number(p.id) === Number(id));
+const PostArticle = ({ post }) => {
   const [likeCount, setLikeCount] = useState(0); // 좋아요 수 세기
 
   if (!post) return <div>게시물을 찾을 수 없습니다.</div>;
@@ -38,7 +19,7 @@ const PostArticle = ({ id }) => {
             {post?.author}
           </h3>
           <p className="text-grey-2 font-pretendard self-stretch truncate text-xs leading-4 font-medium">
-            {post?.date}
+            {post?.date && new Date(post.date).toLocaleDateString()}
           </p>
         </div>
       </header>
@@ -49,7 +30,7 @@ const PostArticle = ({ id }) => {
         </h1>
         {/* 해시태그 목록 */}
         <ul className="flex items-center gap-2">
-          {post.tags.map((tag, index) => (
+          {post?.tags?.map((tag, index) => (
             <li
               className="bg-main-2 text-main-1 font-pretendard flex h-[1.74419rem] items-center gap-1 rounded-[0.17444rem] px-3 py-2 text-center text-xs leading-4 font-medium"
               key={index}
@@ -61,7 +42,7 @@ const PostArticle = ({ id }) => {
       </div>
       {/* 게시물 본문 */}
       <p className="text-grey-1 font-pretendard my-[1.875rem] self-stretch text-base leading-5 font-normal">
-        {post.content}
+        {post?.body}
       </p>
       {/* 게시물 이미지 */}
       <img
