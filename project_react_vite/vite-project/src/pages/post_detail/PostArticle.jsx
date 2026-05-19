@@ -1,8 +1,6 @@
 const tags = ["#태그", "#태그"];
-const posts = [{ id: "1" }, { id: "2" }];
 
-const PostArticle = ({ id }) => {
-  const post = posts.find((p) => p.id === id);
+const PostArticle = ({ post }) => {
   return (
     <article className="gap-11">
       <div className="flex flex-col items-start justify-start gap-7 self-stretch">
@@ -20,7 +18,7 @@ const PostArticle = ({ id }) => {
                   likelion2026
                 </div>
                 <div className="text-Gray-2 justify-center self-stretch font-['Pretendard'] text-xs leading-4 font-medium">
-                  2026. DD. MM
+                  {post?.date && new Date(post.date).toLocaleDateString()}
                 </div>
               </div>
             </div>
@@ -30,7 +28,7 @@ const PostArticle = ({ id }) => {
             <div className="flex flex-col items-start justify-start gap-7 self-stretch">
               <div className="flex flex-col items-start justify-start gap-4 self-stretch">
                 <h1 className="text-Black justify-center self-stretch font-['Pretendard'] text-3xl leading-10 font-semibold">
-                  게시물 제목입니다.
+                  {post?.title}
                 </h1>
 
                 <ul className="flex gap-2">
@@ -45,14 +43,7 @@ const PostArticle = ({ id }) => {
                 </ul>
               </div>
               <div className="text-Gray-1 justify-center self-stretch font-['Pretendard'] text-base leading-5 font-normal">
-                이것은 본문입니다. 여기에 더 많은 텍스트가 들어갈 수 있습니다.
-                게시물의 내용은 여러 단락으로 구성될 수 있으며, 다양한 주제에
-                대해 이야기할 수 있습니다.
-              </div>
-
-              <div className="text-Gray-1 justify-center self-stretch font-['Pretendard'] text-base leading-5 font-normal">
-                두 번째 단락입니다. 여기에는 더 많은 정보와 세부 사항이 포함될
-                수 있습니다.
+                {post?.body}
               </div>
             </div>
           </div>
