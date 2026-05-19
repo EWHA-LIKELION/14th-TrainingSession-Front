@@ -2,24 +2,8 @@ import CommentItem from "./CommentItem";
 import { useState, useEffect } from "react";
 import { useToastStore } from "../../store/useToastStore";
 
-const comments = [
-  {
-    id: 1,
-    author: "likelion2026",
-    date: "2026. 03. 01. 18:36",
-    content: "유익한 정보네요. 도움이 많이 되었습니다.",
-    isMyComment: true,
-  },
-  {
-    id: 2,
-    author: "likelion2026",
-    date: "2026. 03. 01. 12:48",
-    content: "좋은 글 감사합니다!",
-    isMyComment: false,
-  },
-];
-
-const CommentSection = () => {
+// 구조 분해 할당
+const CommentSection = ({ comments }) => {
   const [comment, setComment] = useState("");
   useEffect(() => {
     console.log("현재 글자 수:", comment.length);
@@ -39,7 +23,9 @@ const CommentSection = () => {
         {/* 댓글 텍스트 */}
         <h2 className="text-2xl font-semibold leading-8 text-black">댓글</h2>
         {/* 댓글 수 n */}
-        <span className="text-2xl font-semibold leading-8 text-gray-1">2</span>
+        <span className="text-2xl font-semibold leading-8 text-gray-1">
+          {comments?.length || 0}
+        </span>
       </div>
 
       <form
@@ -78,12 +64,14 @@ const CommentSection = () => {
       </form>
 
       <ul className="flex flex-col -mt-2">
-        {comments.map((comment) => (
+        {/* API에서 받아온 comments 배열을 map으로 순회하면서 CommentItem
+        컴포넌트 렌더링 */}
+        {comments?.map((comment) => (
           <CommentItem
             key={comment.id}
-            author={comment.author}
-            date={comment.date}
-            content={comment.content}
+            author={comment.username}
+            date={new Date(comment.created_at).toLocaleDateString()}
+            content={comment.comment_text}
             isMyComment={comment.isMyComment}
           />
         ))}
