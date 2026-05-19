@@ -9,7 +9,7 @@ const Toast = ({ type = "check", text = "" }) => {
  <div
 
  className={`flex w-95 items-center gap-2 rounded-lg px-5 py-3
-${type === "check" ? "bg-[#00BC7D]/80" : "bg-[#FF5558]/80"}`}
+${type === "check" ? "bg-main-1" : "bg-error"}`}
 
  >
 

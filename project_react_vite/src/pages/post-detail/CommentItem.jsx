@@ -16,7 +16,7 @@ const CommentItem = ({
 
           <div>
             <h5 className="font-semibold text-black">{author}</h5>
-            <p className="text-sm text-gray-1">{date}</p>
+            <p className="text-sm text-gray-2">{date}</p>
           </div>
         </div>
 
