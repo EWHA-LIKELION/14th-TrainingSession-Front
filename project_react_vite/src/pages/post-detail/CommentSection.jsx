@@ -2,25 +2,10 @@ import CommentItem from "./CommentItem";
 import { useEffect, useState } from "react";
 import useToastStore from "../../store/useToastStore";
 
-const comments = [
-  {
-    id: 1,
-    author: "likelion2026",
-    date: "2026.03.01.18:36",
-    content: "유익한 정보네요. 도움이 많이 되었습니다.",
-    isMyComment: true,
-  },
-  {
-    id: 2,
-    author: "likelion2026",
-    date: "2026. 03. 01. 12:48",
-    content: "좋은 글 감사합니다!",
-    isMyComment: false,
-  },
-];
+const CommentSection = ({ comments = [] }) => {
 
-const CommentSection = () => {
   const [comment, setComment] = useState("");
+
   const showToast = useToastStore((state) => state.showToast);
 
   useEffect(() => {
@@ -33,6 +18,7 @@ const CommentSection = () => {
   };
 
   return (
+    
     <section className="flex flex-col gap-5">
       <div className="text-lg font-semibold text-black">
         댓글
@@ -60,7 +46,9 @@ const CommentSection = () => {
           />
         </div>
 
-        <div className="flex w-full items-center justify-between">
+        <div className="align-items: center;
+flex: 1 0 0;
+align-self: stretch;">
           <span className="text-sm text-gray-1">{comment.length}/100</span>
 
           <button
@@ -74,15 +62,25 @@ const CommentSection = () => {
       </form>
 
       <ul className="flex flex-col">
-        {comments.map((comment) => (
+        {comments?.map((comment) => (
+
           <CommentItem
-            key={comment.id}
-            author={comment.author}
-            date={comment.date}
-            content={comment.content}
-            isMyComment={comment.isMyComment}
+
+          key={comment.id}
+
+          author={comment.username}
+
+          date={new
+          Date(comment.created_at).toLocaleDateString()}
+
+          content={comment.comment_text}
+
+          isMyComment={comment.isMyComment}
+
           />
+        
         ))}
+         
       </ul>
     </section>
   );
