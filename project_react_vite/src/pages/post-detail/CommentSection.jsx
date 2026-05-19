@@ -2,26 +2,7 @@ import CommentItem from "./CommentItem";
 import { useEffect, useState } from "react";
 import useToastStore from "../../store/useToastStore";
 
-//mock data (실제 서버에서 받아올 데이터를 임시로 흉내낸 것)
-const comments = [
-  {
-    id: 1,
-    author: "likelion2026",
-    date: "2026. 03. 01. 18:36",
-    content: "유익한 정보네요. 도움이 많이 되었습니다.",
-    isMyComment: true,
-  },
-
-  {
-    id: 2,
-    author: "likelion2026",
-    date: "2026. 03. 01. 12:48",
-    content: "좋은 글 감사합니다!",
-    isMyComment: false,
-  },
-];
-
-const CommentSection = () => {
+const CommentSection = ({ comments }) => {
   const [comment, setComment] = useState("");
   const showToast = useToastStore((state) => state.showToast);
   useEffect(() => {
@@ -37,9 +18,7 @@ const CommentSection = () => {
     <section className="flex w-full flex-col gap-7 rounded-lg bg-white p-7.5">
       <div className="flex items-center gap-1 text-2xl leading-8 font-semibold text-black">
         <span>댓글</span>
-        <span className="text-gray-1 text-2xl leading-8 font-semibold">
-          {comments.length}
-        </span>
+        <span className="text-gray-1 text-2xl leading-8 font-semibold"></span>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
@@ -78,12 +57,12 @@ const CommentSection = () => {
       </form>
 
       <ul className="flex w-full flex-col gap-0">
-        {comments.map((comment) => (
+        {comments?.map((comment) => (
           <CommentItem
             key={comment.id}
-            author={comment.author}
-            date={comment.date}
-            content={comment.content}
+            author={comment.username}
+            date={new Date(comment.created_at).toLocaleDateString()}
+            content={comment.comment_text}
             isMyComment={comment.isMyComment}
           />
         ))}

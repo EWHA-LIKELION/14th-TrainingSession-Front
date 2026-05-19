@@ -1,17 +1,4 @@
-const posts = [
-  {
-    id: "1",
-    title: "Tailwindcss 실습!",
-    tags: ["#멋사", "#사랑해"],
-  },
-  {
-    id: "2",
-    title: "두 번째 페이지 연결하기~",
-    tags: ["#두번째 태그는", "#이렇게 바뀝니다"],
-  },
-];
-const PostArticle = ({ id }) => {
-  const post = posts.find((p) => p.id === id);
+const PostArticle = ({ post }) => {
   return (
     <article className="flex w-full flex-col gap-3 rounded-lg bg-white p-[30px]">
       {/*게시물 작성자 정보*/}
@@ -21,9 +8,12 @@ const PostArticle = ({ id }) => {
           alt="profile"
           className="h-11 w-11 rounded-full object-cover"
         />
+
         <div className="flex flex-col">
           <h3 className="text-sm font-semibold text-black">likelion2026</h3>
-          <p className="text-gray-2 text-xs">2026. MM. DD</p>
+          <p className="text-gray-2 text-xs">
+            {post?.date && new Date(post.date).toLocaleDateString}
+          </p>
         </div>
       </header>
       {/*게시물 제목*/}
@@ -43,12 +33,7 @@ const PostArticle = ({ id }) => {
       </ul>
       {/*게시물 본문*/}
       <p className="text-gray-1 mt-4 mb-4 text-base leading-5 font-normal">
-        이것은 본문입니다. 여기에 더 많은 텍스트가 들어갈 수 있습니다. 게시물의
-        내용은 여러 단락으로 구성될 수 있으며, 다양한 주제에 대해 이야기할 수
-        있습니다.
-        <br />
-        <br />두 번째 단락입니다. 여기에는 더 많은 정보와 세부 사항이 포함될 수
-        있습니다.
+        {post?.body}
       </p>
       {/*게시물 이미지*/}
       <div className="border-gray-3 overflow-hidden rounded-lg border">
