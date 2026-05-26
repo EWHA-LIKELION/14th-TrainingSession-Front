@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import api from "../../api";
 import PageHeader from "../../components/PageHeader";
@@ -9,23 +9,13 @@ import CommentSection from "./CommentSection";
 const PostDetailPage = () => {
   const { id } = useParams();
 
-  const [post, setPost] = useState(null);
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await api.get(`/blog/${id}`);
-
-        console.log(response.data);
-
-        setPost(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchPost();
-  }, [id]);
+  const { data: post } = useQuery({
+    queryKey: ["post", id],
+    queryFn: async () => {
+      const response = await api.get(`/blog/${id}`);
+      return response.data;
+    },
+  });
 
   return (
     <div className="flex flex-col items-center justify-center">
