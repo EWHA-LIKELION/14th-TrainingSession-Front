@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
+import api from "../../api";
 import PageHeader from "../../components/PageHeader";
 import PostArticle from "./PostArticle";
 import CommentSection from "./CommentSection";
@@ -14,9 +14,7 @@ const PostDetailPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/blog/${id}`,
-        );
+        const response = await api.get(`/blog/${id}`);
 
         console.log(response.data);
 
