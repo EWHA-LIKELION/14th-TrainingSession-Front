@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom"; // useParams는 URL의 매개변수에 접근할 수 있게 해줌
+import { useQuery } from "@tanstack/react-query"; // useQuery는 데이터를 가져오고 캐싱하는 데 사용되는 React Query의 훅
 import PageHeader from "../../components/PageHeader"; // ../은 상위 폴더로 이동한다는 뜻
 import PostArticle from "./PostArticle"; // ./은 같은 폴더 내에서 찾는다는 뜻
 import CommentSection from "./CommentSection";
@@ -8,33 +9,21 @@ import { useEffect, useState } from "react";
 import api from "../../api"; // api.js에서 export한 axios 인스턴스 불러오기
 
 function PostDetailPage() {
-  // useState 훅을 사용하여 post 상태값과 setPost 함수를 초기화
-  const [post, setPost] = useState(null);
-
-  const { id } = useParams();
   // useParams를 사용하여 URL에서 id 매개변수를 추출. "구조 분해 할당"
+  const { id } = useParams();
 
-  console.log("1. 현재 인식된 환경변수:", import.meta.env.VITE_API_BASE_URL);
-  console.log("2. api 인스턴스의 기본 주소:", api.defaults?.baseURL);
+  // useQuery를 사용하여 API에서 게시물 데이터를 가져옴.
+  // queryKey는 캐싱과 관련된 고유한 키로, "post"와 id를 조합하여 사용. queryFn은 데이터를 가져오는 함수로,
+  // axios 인스턴스를 사용하여 API 요청을 보내고 응답 데이터를 반환.
+  const { data: post } = useQuery({
+    queryKey: ["post", id],
 
-  // 컴포넌트가 마운트될 때 API에서 게시물 데이터를 가져옴
-  // 현재는 Method가 받아오는 GET이라서 body는 필요없음
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        // 호출
-        const response = await api.get(`/blog/${id}`); // BaseURL로 GET 요청 보내기
+    queryFn: async () => {
+      const response = await api.get(`/blog/${id}`);
 
-        console.log(response.data); // 원래 없어도 되지만, 개발자 도구에서 확인하려고 사용
-
-        setPost(response.data);
-      } catch (error) {
-        console.error(error); // 문제가 생기면 콘솔에 에러 메시지 출력
-      }
-    };
-
-    fetchPosts();
-  }, [id]); // id가 바뀔 때마다 이 useEffect가 다시 실행됨
+      return response.data;
+    },
+  });
 
   return (
     // min-h-screen: 화면 전체 높이
