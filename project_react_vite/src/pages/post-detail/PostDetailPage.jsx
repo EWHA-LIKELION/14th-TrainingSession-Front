@@ -7,23 +7,20 @@ import api from "../../api";
 
 function PostDetailPage() {
   const { id } = useParams();
-  
-const [ post, setPost] = useState(null);
+  const [post, setPost] = useState(null);
 
-
-useEffect(()=> {
+  useEffect(() => {
     const fetchPosts = async () => {
-        try{
-            const response = await api.get(`/blog/${id}`);
-            console.log(response.data);
-            setPost(response.data);
-        } catch (error) {
-          console.error(error);
-        }
+      try {
+        const response = await api.get(`/blog/${id}`);
+        console.log(response.data);
+        setPost(response.data);
+      } catch (error) {
+        console.error(error);
+      }
     };
-        fetchPosts();
- }, [id]);
-  
+    fetchPosts();
+  }, [id]);
 
   return (
     <div className="min-h-screen bg-gray-4 font-pretendard">
