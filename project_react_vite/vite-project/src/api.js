@@ -1,5 +1,5 @@
 import axios from "axios";
-import useAuthStore from "@/store/useAuthStore";
+import { useAuthStore } from "./Store/useAuthStore";
 
 // axios 인스턴스 생성
 
