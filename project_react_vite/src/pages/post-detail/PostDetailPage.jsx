@@ -3,29 +3,19 @@ import PageHeader from "../../components/PageHeader";
 import PostArticle from "./PostArticle";
 import CommentSection from "./CommentSection";
 
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import api from "../../api";
 
 function PostDetailPage() {
-  const [post, setPost] = useState(null);
-
   const { id } = useParams();
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await api.get(`/blog/${id}`);
-
-        console.log(response.data); // 개발자 도구용
-
-        setPost(response.data);
-      } catch (error) {
-        console.error(error); // 에러 시 메세지 출력
-      }
-    };
-
-    fetchPosts();
-  }, [id]); // id가 바뀌면 useEffect 다시 실행
+  const { data: post } = useQuery({
+    queryKey: ["post", id],
+    queryFn: async () => {
+      const response = await api.get(`/blog/${id}`);
+      return response.data;
+    },
+  });
 
   return (
     <div className="bg-grey-4 min-h-screen">
