@@ -2,32 +2,24 @@ import { useParams } from "react-router-dom";
 import PageHeader from "../../components/PageHeader";
 import PostArticle from "./PostArticle";
 import CommentSection from "./CommentSection";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "../../api";
 
-import { useEffect, useState } from "react";
+//import { axios } from "axios";
+//import { useEffect, useState } from "react";
 
-import axios from "axios";
-
-function PostDetailPage() {
+const PostDetailPage = () => {
   const { id } = useParams();
-  const [post, setPost] = useState(null);
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/blog/${id}`,
-        );
 
-        console.log(response.data);
+  const { data: post } = useQuery({
+    queryKey: ["post", id],
 
-        setPost(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    queryFn: async () => {
+      const response = await api.get(`/blog/${id}`);
 
-    fetchPosts();
-  }, [id]);
-
+      return response.data;
+    },
+  });
   return (
     <>
       <PageHeader />
@@ -37,6 +29,6 @@ function PostDetailPage() {
       </main>
     </>
   );
-}
+};
 
 export default PostDetailPage;
