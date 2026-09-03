@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+
+import { getPost } from "../../api/post";
 
 import PageHeader from "../../components/PageHeader";
 import PostArticle from "./PostArticle";
@@ -14,15 +15,14 @@ const PostDetailPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/blog/${id}`,
-        );
+        const data = await getPost(id);
 
-        console.log(response.data);
+        console.log(data);
 
-        setPost(response.data);
+        setPost(data);
       } catch (error) {
-        console.error(error);
+        // 인터셉터에서 정리한 에러 객체가 넘어옵니다.
+        console.error(error.message);
       }
     };
 
