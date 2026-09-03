@@ -1,20 +1,34 @@
 import { useState, useEffect } from "react";
 import CommentItem from "./CommentItem";
 import useToastStore from "../../store/useToastStore";
+import type { Comment } from "../../types/post";
 
-const CommentSection = ({ comments }) => {
-  // let comment = "";
+// ⭐ 이 컴포넌트가 받는 props 의 형태를 정의합니다.
+//    comments 는 로딩 중엔 없을 수 있으니 optional(?) 로 둡니다.
+interface CommentSectionProps {
+  comments?: Comment[];
+}
+
+const CommentSection = ({ comments }: CommentSectionProps) => {
   const [comment, setComment] = useState("");
   const showToast = useToastStore((state) => state.showToast);
 
-  //comment가 바뀔 때마다 실행
+  // comment 가 바뀔 때마다 실행
   useEffect(() => {
     console.log("현재 글자 수:", comment.length);
   }, [comment]);
 
-  const handleSubmit = (e) => {
+  // ⭐ 핸들러를 함수로 분리하면 e 의 타입을 직접 적어줘야 합니다.
+  //    form 제출 이벤트 → React.SyntheticEvent
+  //    (React 19 부터 FormEvent 는 deprecated. preventDefault 만 쓰면 SyntheticEvent 로 충분)
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     showToast("로그인 후 댓글을 입력할 수 있어요", "alert");
+  };
+
+  //    textarea 값 변경 이벤트 → React.ChangeEvent<HTMLTextAreaElement>
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setComment(e.target.value);
   };
 
   return (
@@ -36,10 +50,7 @@ const CommentSection = ({ comments }) => {
           />
           <textarea
             value={comment}
-            // onChange={(e) => {
-            //   comment = e.target.value;
-            // }}
-            onChange={(e) => setComment(e.target.value)}
+            onChange={handleChange}
             placeholder="댓글을 입력하세요."
             required
             className="placeholder-gray-2 border-gray-2 flex w-158.5 items-center self-stretch rounded-lg border bg-white px-4 py-3"
@@ -59,24 +70,8 @@ const CommentSection = ({ comments }) => {
         </div>
       </form>
 
-      {/* 1단계: props 개념 설명 - CommentItem을 직접 두 번 사용 */}
-      {/* <ul>
-        <CommentItem
-          author="likelion2026"
-          date="2026. 03. 01. 18:36"
-          content="유익한 정보네요. 도움이 많이 되었습니다."
-          isMyComment={true}
-        />
-        <CommentItem
-          author="likelion2026"
-          date="2026. 03. 01. 12:48"
-          content="좋은 글 감사합니다!"
-          isMyComment={false}
-        />
-      </ul> */}
-
-      {/* 2단계: map으로 리팩토링 */}
-      <ul className="h flex flex-col gap-2">
+      {/* map 으로 댓글 목록 렌더링 */}
+      <ul className="flex flex-col gap-2">
         {comments?.map((comment) => (
           <CommentItem
             key={comment.id}
