@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import PostDetailPage from "./pages/post-detail/PostDetailPage";
 
 // 전역 상태 관리
@@ -10,11 +10,9 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/post/:id" element={<PostDetailPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/post/:id" element={<PostDetailPage />} />
+      </Routes>
 
       {/* 토스트 */}
       <ToastManager
