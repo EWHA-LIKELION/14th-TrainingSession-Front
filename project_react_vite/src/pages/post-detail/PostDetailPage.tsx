@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import PageHeader from "../../components/PageHeader";
 import PostArticle from "./PostArticle";
 import CommentSection from "./CommentSection";
+import type { Post } from "../../types/post";
 import api from "../../api";
 
 function PostDetailPage() {
