@@ -5,6 +5,7 @@ import CommentSection from "./CommentSection";
 import { useEffect, useState } from "react";
 import api from "../../api";
 
+
 function PostDetailPage() {
   const { id } = useParams();
   const [post, setPost] = useState(null);

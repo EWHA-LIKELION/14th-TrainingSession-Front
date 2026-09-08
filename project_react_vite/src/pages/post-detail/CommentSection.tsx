@@ -1,8 +1,13 @@
 import CommentItem from "./CommentItem";
 import { useEffect, useState } from "react";
 import useToastStore from "../../store/useToastStore";
+import type { Comment } from "../../types/post";
 
-const CommentSection = ({ comments = [] }) => {
+interface CommentSectionProps{
+  comments?: Comment[];
+}
+
+const CommentSection = ({ comments }:CommentSectionProps) => {
 
   const [comment, setComment] = useState("");
 
@@ -12,10 +17,17 @@ const CommentSection = ({ comments = [] }) => {
     console.log("현재 글자 수:", comment.length);
   }, [comment]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     showToast("로그인 후 댓글을 입력할 수 있어요.", "alert");
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>)
+=> {
+
+ setComment(e.target.value);
+
+};
 
   return (
     
