@@ -4,18 +4,30 @@ import { useState, useEffect } from "react";
 // 1. 전역 상태 관리 스토어 임포트
 import useToastStore from "../../store/useToastStore";
 
+// 컴포넌트가 받는 props의 모양을 interface로 정의
+import type { Comment } from "../../types/post";
+
+// 이 컴포넌트는 comments 를 받음 (로딩 중엔 없을 수 있어 optional chaining ("?") 사용)
+interface CommentSectionProps {
+  comments?: Comment[];
+}
+
 // 부모 컴포넌트(PostDetailPage)에서 전달받은 comments props 사용
-const CommentSection = ({ comments }) => {
+const CommentSection = ({ comments }: CommentSectionProps) => {
   const [comment, setComment] = useState("");
 
   // 2. 스토어에서 showToast 함수 가져오기
   const showToast = useToastStore((state) => state.showToast);
 
   // 3. 버튼 클릭 시 실행될 함수 정의
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     // 토스트 띄우기 (문구, 타입)
     showToast("로그인 후 댓글을 입력할 수 있어요", "alert");
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setComment(e.target.value);
   };
 
   useEffect(() => {
