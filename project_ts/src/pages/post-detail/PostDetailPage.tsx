@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { getPost } from "../../api/post";
+import type { Post } from "../../types/post";
 
 import PageHeader from "../../components/PageHeader";
 import PostArticle from "./PostArticle";
@@ -10,9 +11,13 @@ import CommentSection from "./CommentSection";
 const PostDetailPage = () => {
   const { id } = useParams();
 
-  const [post, setPost] = useState(null);
+  // ⭐ 앞에서 정의한 Post 타입을 여기서 사용합니다.
+  //    처음엔 데이터가 없으니 null, 받아오면 Post 가 들어옵니다. → Post | null
+  const [post, setPost] = useState<Post | null>(null);
 
   useEffect(() => {
+    if (!id) return; // id 가 없으면 요청하지 않습니다.
+
     const fetchPost = async () => {
       try {
         const data = await getPost(id);
@@ -21,8 +26,7 @@ const PostDetailPage = () => {
 
         setPost(data);
       } catch (error) {
-        // 인터셉터에서 정리한 에러 객체가 넘어옵니다.
-        console.error(error.message);
+        console.error(error);
       }
     };
 
