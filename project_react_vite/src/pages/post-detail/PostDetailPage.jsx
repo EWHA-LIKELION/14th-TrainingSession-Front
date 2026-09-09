@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { getPost } from "../../api/post";
+import { getPost } from "@/api/post";
 
-import PageHeader from "../../components/PageHeader";
+import PageHeader from "@/components/PageHeader";
 import PostArticle from "./PostArticle";
 import CommentSection from "./CommentSection";
 

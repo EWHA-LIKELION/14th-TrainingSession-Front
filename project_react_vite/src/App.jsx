@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import PostDetailPage from "./pages/post-detail/PostDetailPage";
+import PostDetailPage from "@/pages/post-detail/PostDetailPage";
 
 // 전역 상태 관리
-import useToastStore from "./store/useToastStore";
-import { ToastManager } from "./components/Toast";
+import useToastStore from "@/store/useToastStore";
+import { ToastManager } from "@/components/Toast";
 
 function App() {
   const { type, text, isOpen, closeToast } = useToastStore();

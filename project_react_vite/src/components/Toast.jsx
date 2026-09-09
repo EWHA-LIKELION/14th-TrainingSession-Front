@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 // 이미지도 "모듈"이다 — import하면 Vite가 번들에 포함시키고, 최종 URL 문자열을 돌려준다
-import checkIcon from "../assets/icons/check.svg";
-import alertIcon from "../assets/icons/alert.svg";
+import checkIcon from "@/assets/icons/check.svg";
+import alertIcon from "@/assets/icons/alert.svg";
 
 /**
  * Toast 컴포넌트

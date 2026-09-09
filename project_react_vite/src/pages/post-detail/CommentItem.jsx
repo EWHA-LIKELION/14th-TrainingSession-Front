@@ -1,4 +1,4 @@
-import profileImage from "../../assets/images/profile.png";
+import profileImage from "@/assets/images/profile.png";
 
 const CommentItem = ({ author, date, content, isMyComment }) => {
   return (

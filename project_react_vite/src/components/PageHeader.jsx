@@ -1,4 +1,4 @@
-import backIcon from "../assets/icons/back.svg";
+import backIcon from "@/assets/icons/back.svg";
 
 const PageHeader = () => {
   const title = "목록으로";

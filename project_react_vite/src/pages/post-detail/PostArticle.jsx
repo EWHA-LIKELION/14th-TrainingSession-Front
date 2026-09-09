@@ -1,7 +1,7 @@
-import profileImage from "../../assets/images/profile.png";
-import photoImage from "../../assets/images/photo.png";
-import likeIcon from "../../assets/icons/like.svg";
-import commentIcon from "../../assets/icons/comment.svg";
+import profileImage from "@/assets/images/profile.png";
+import photoImage from "@/assets/images/photo.png";
+import likeIcon from "@/assets/icons/like.svg";
+import commentIcon from "@/assets/icons/comment.svg";
 
 const tags = ["#태그", "#태그"];
 

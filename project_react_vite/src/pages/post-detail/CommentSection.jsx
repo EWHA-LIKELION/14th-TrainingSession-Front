@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CommentItem from "./CommentItem";
-import useToastStore from "../../store/useToastStore";
-import profileImage from "../../assets/images/profile.png";
+import useToastStore from "@/store/useToastStore";
+import profileImage from "@/assets/images/profile.png";
 
 const CommentSection = ({ comments }) => {
   // let comment = "";

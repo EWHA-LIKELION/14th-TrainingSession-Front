@@ -1,4 +1,4 @@
-# 이미지, 어디에 둬야 할까? — `src/assets` vs `public`
+# 이미지, 어디에 둬야 할까? — `src/assets` vs `public`, 그리고 `@/` alias
 
 > **정정 공지**
 > 지난 세션에서 "이미지는 전부 `public/`에 넣고 `/images/photo.png`처럼 절대경로로 쓰세요"라고 설명했는데, **이건 잘못된 설명이었습니다.**
@@ -242,6 +242,9 @@ import commentIcon from "../../assets/icons/comment.svg";
 <img src={photoImage} alt="photo" />
 ```
 
+> `../../assets/...`가 눈에 거슬리죠? 맞습니다. 이건 **6장에서 `@/assets/...`로 정리**합니다.
+> 지금은 "문자열 → import"라는 변화 하나에만 집중하세요.
+
 > **`import backIcon from "..."`이 실제로 주는 값이 뭔가요?**
 > 그냥 **문자열**입니다. `console.log(backIcon)`을 찍어보세요.
 > - 개발 중: `/src/assets/icons/back.svg`
@@ -325,10 +328,156 @@ CSS의 `url()`도 똑같이 처리됩니다. 상대경로를 쓰면 Vite가 해�
 
 ---
 
-## 6. 한 줄 요약
+## 6. 이어서: `@/` alias — `../../` 지옥에서 벗어나기
+
+`import`로 바꾸고 나니 새로운 불편함이 생겼습니다.
+
+```jsx
+// src/pages/post-detail/PostArticle.jsx
+import profileImage from "../../assets/images/profile.png";
+import photoImage from "../../assets/images/photo.png";
+import likeIcon from "../../assets/icons/like.svg";
+```
+
+`../../`가 몇 개여야 맞는지 **매번 세어야 합니다.** 문제는 세 가지예요.
+
+1. **세기 어렵다** — 폴더가 깊어질수록 `../../../`이 되고, 하나만 틀려도 에러
+2. **파일을 옮기면 전부 깨진다** — `PostArticle.jsx`를 다른 폴더로 옮기는 순간 안의 모든 상대경로를 다시 계산해야 함
+3. **읽어도 어디인지 모른다** — `"../../store/useToastStore"`를 보고 이게 어느 폴더인지 알려면, 지금 파일이 어디 있는지부터 확인해야 함
+
+alias는 **"`@`는 언제나 `src` 폴더를 뜻한다"**고 약속하는 것입니다.
+
+```jsx
+import profileImage from "@/assets/images/profile.png";
+import likeIcon from "@/assets/icons/like.svg";
+import useToastStore from "@/store/useToastStore";
+```
+
+이제 이 파일이 어디 있든 경로가 **똑같습니다.** 파일을 옮겨도 안 깨지고, 읽는 순간 위치를 알 수 있어요.
+
+### 설정은 두 군데에 해야 한다
+
+여기가 제일 많이 막히는 지점입니다. **번들러와 에디터는 서로를 모릅니다.**
+`@`가 뭔지 둘 다에게 각각 알려줘야 해요.
+
+**① `vite.config.js` — 빌드할 때 Vite가 경로를 찾으라고**
+
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import tailwindcss from "@tailwindcss/vite";
+import { fileURLToPath, URL } from "node:url";
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      // "@" 로 시작하는 import를 src 폴더의 절대경로로 바꿔준다
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+});
+```
+
+**② `jsconfig.json` (새 파일) — VSCode가 자동완성/Cmd+클릭 하라고**
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}
+```
+
+> **검색하면 나오는 `"baseUrl": "."`는 왜 없나요?**
+> 예전에는 `paths`를 쓰려면 `baseUrl`이 **반드시** 있어야 했습니다. 그래서 블로그 글 대부분에 같이 적혀 있어요.
+> 하지만 TypeScript 4.1부터 `baseUrl` 없이도 `paths`를 쓸 수 있고,
+> 이때 경로는 **이 설정 파일이 있는 폴더 기준**으로 해석됩니다. `"./src/*"`가 곧 `프로젝트루트/src/*`인 거죠.
+>
+> 게다가 `baseUrl`은 **폐기(deprecated)됐습니다.** 최신 에디터에서 넣으면 이런 경고가 뜹니다.
+>
+> ```
+> 'baseUrl' 옵션은 더 이상 사용되지 않으며 TypeScript 7.0에서 작동하지 않습니다.
+> ```
+>
+> 옛날 자료를 복붙하면 만나게 되는 경고이니, **`baseUrl`은 넣지 마세요.**
+> (`baseUrl`이 위험했던 이유: `src`를 기준으로 잡아버리면 `import x from "store/useToastStore"`처럼
+> **`@` 없이도** import가 되는데, 이러면 npm 패키지 이름인지 내 폴더인지 구분이 안 갑니다.
+> `paths`만 쓰면 `@/`로 시작할 때만 동작하니 이런 혼동이 없어요.)
+
+> **하나만 하면 어떻게 되나요?**
+> - `vite.config.js`만 → **빌드는 성공하는데** VSCode가 `@/...`를 못 찾아서 빨간 줄이 뜨고, Cmd+클릭·자동완성이 안 됩니다
+> - `jsconfig.json`만 → **에디터는 조용한데** 빌드가 이렇게 **실패**합니다
+>   ```
+>   [vite]: Rollup failed to resolve import "@/pages/post-detail/PostDetailPage"
+>   from "src/App.jsx".
+>   ```
+>
+> 둘은 완전히 별개의 프로그램이라, 한쪽 설정이 다른 쪽에 전달되지 않습니다. 반드시 둘 다.
+
+> **`fileURLToPath(new URL(...))`는 뭔가요?**
+> alias 값은 **절대경로**여야 해서 "이 설정 파일이 있는 폴더 + `/src`"를 계산하는 코드입니다.
+> 예전 방식인 `path.resolve(__dirname, "./src")`를 쓰고 싶을 수 있는데,
+> 우리 `package.json`에 `"type": "module"`이 있어서 이 파일은 ESM이고 **ESM에는 `__dirname`이 없습니다.**
+> 그래서 대신 `import.meta.url`(현재 파일의 위치)을 기준으로 계산합니다. Vite 공식 문서 방식이에요.
+
+### 언제 `@/`를 쓰고, 언제 `./`를 쓰나
+
+**폴더를 벗어나면 `@/`, 같은 폴더 안이면 `./`**
+
+```jsx
+// src/pages/post-detail/CommentSection.jsx
+
+import CommentItem from "./CommentItem";              // ✅ 같은 폴더 형제 → 상대경로
+import useToastStore from "@/store/useToastStore";    // ✅ 폴더 벗어남 → alias
+import profileImage from "@/assets/images/profile.png"; // ✅ 폴더 벗어남 → alias
+```
+
+같은 폴더 파일까지 `@/pages/post-detail/CommentItem`으로 쓰면 오히려 길고, "이 둘은 한 세트"라는 정보가 사라집니다.
+
+> **기억할 규칙 하나: 코드에 `../`가 보이면 `@/`로 바꿀 신호입니다.**
+
+### alias는 결과물을 바꾸지 않는다
+
+실제로 확인해봤습니다. alias 적용 **전과 후의 빌드 결과**입니다.
+
+```
+적용 전:  dist/assets/index-Bz0xIBjJ.js   284.91 kB
+적용 후:  dist/assets/index-Bz0xIBjJ.js   284.91 kB
+```
+
+**해시까지 완전히 같습니다.** 번들 내용이 1바이트도 안 바뀌었다는 뜻이에요.
+
+alias는 빌드 시점에 `@/assets/...`를 `/실제/경로/src/assets/...`로 **글자만 바꿔치기**하고 끝납니다.
+성능과는 아무 상관이 없고, 순수하게 **사람이 읽고 쓰기 편하려고** 하는 설정입니다.
+
+### 알아두면 좋은 것
+
+- **`@`는 그냥 관례입니다.** 규칙이 아니에요. `~`를 쓰는 팀도 있고, `@components`, `@assets`처럼 폴더별로 여러 개를 만들기도 합니다. 다만 `@/`가 가장 흔하니 특별한 이유가 없으면 따라가면 됩니다.
+- **npm 패키지와 헷갈리지 않나요?** `@tailwindcss/vite`처럼 `@`로 시작하는 패키지가 있죠. 하지만 우리 alias는 `@` **바로 뒤에 `/`**가 오는 형태(`@/...`)라 구분됩니다.
+- **TypeScript 프로젝트라면** `jsconfig.json` 대신 `tsconfig.json`(정확히는 `tsconfig.app.json`)의 `compilerOptions.paths`에 똑같이 넣습니다. (`project_ts`에서 다시 볼 내용)
+  - 참고로 TS에서는 이미지 import 시 `Cannot find module '@/assets/icons/back.svg'` 에러가 날 수 있는데, `src/vite-env.d.ts`의 `/// <reference types="vite/client" />` 한 줄이 `.svg`·`.png` 같은 파일의 타입 선언을 제공합니다. Vite 템플릿에 기본으로 들어있으니 **지우지 마세요.**
+- **설정 후 VSCode가 여전히 못 찾으면** 창을 다시 열거나 명령 팔레트에서 `Developer: Reload Window`를 실행하세요. `jsconfig.json`은 에디터가 시작할 때 읽습니다. `npm run dev`도 재시작해야 합니다.
+
+### 직접 해보기
+
+1. `vite.config.js`에 `resolve.alias` 추가
+2. 루트에 `jsconfig.json` 생성
+3. `npm run dev` **재시작** (설정 파일은 실행 중에 다시 안 읽습니다)
+4. 아무 파일에서 `../`로 시작하는 import를 `@/`로 바꿔보기
+5. `@/`를 치는 순간 VSCode가 폴더 목록을 자동완성해주면 성공
+6. `@/assets/icons/없는파일.svg`로 일부러 오타를 내고 빌드 → **에러가 나야 정상** (2장 이유 ① 복습)
+
+---
+
+## 7. 한 줄 요약
 
 > **컴포넌트가 화면에 그리는 이미지는 전부 `src/assets`에 넣고 `import`한다.**
 > **`public`은 "URL이 반드시 이 주소여야 하는 것"(favicon, robots.txt, og-image)만 넣는다.**
+> **그리고 `../`가 보이면 `@/` alias로 바꾼다.**
 
 `import`를 쓰는 진짜 이유는 편해서가 아니라,
 **"이 이미지가 정말 존재하는가?"라는 질문에 컴퓨터가 대신 답하게 만들기 때문**입니다.
@@ -349,3 +498,6 @@ CSS의 `url()`도 똑같이 처리됩니다. 상대경로를 쓰면 Vite가 해�
 | `src/pages/post-detail/PostArticle.jsx` | 이미지 2 + 아이콘 2 import |
 | `src/pages/post-detail/CommentItem.jsx` | `profile.png` import |
 | `src/pages/post-detail/CommentSection.jsx` | `profile.png` import |
+| `vite.config.js` | `resolve.alias`로 `@` → `src` 등록 |
+| `jsconfig.json` | 신규 — VSCode가 `@/`를 이해하도록 |
+| `src/` 전체 | `../` 상대경로 import → `@/` alias로 전환 |
