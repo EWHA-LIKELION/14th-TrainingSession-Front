@@ -1,6 +1,7 @@
 import CommentItem from "./CommentItem";
 import { useState, useEffect } from "react";
-import { useToastStore } from "../../store/useToastStore";
+import { useToastStore } from "@/store/useToastStore";
+import profile from "@/assets/images/profile.png";
 
 // 구조 분해 할당
 const CommentSection = ({ comments }) => {
@@ -35,7 +36,7 @@ const CommentSection = ({ comments }) => {
       >
         <div className="flex items-center self-stretch gap-3">
           <img
-            src="/images/profile.png"
+            src={profile}
             alt="profile"
             className="w-10 h-10 rounded-full mb-11"
           />
