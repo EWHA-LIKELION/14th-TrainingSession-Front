@@ -1,9 +1,14 @@
+import profileImage from "@/assets/images/profile.png";
+import photoImage from "@/assets/images/photo.png";
+import likeIcon from "@/assets/icons/like.svg";
+import commentIcon from "@/assets/icons/comment.svg";
+
 const PostArticle = ({ post }) => {
   return (
     <div className="flex w-[751px] flex-col items-start gap-5 rounded-lg bg-white p-[30px]">
       <div className="flex items-center gap-3">
         <img
-          src="/images/profile.png"
+          src={profileImage}
           className="aspect-square h-[45px] w-[45px] rounded-full object-cover"
         />
 
@@ -38,7 +43,7 @@ const PostArticle = ({ post }) => {
         </p>
 
         <img
-          src="/images/photo.png"
+          src={photoImage}
           alt="게시글 사진"
           className="border-gray-2 mb-11 aspect-square w-full rounded-lg border-[0.5px] object-cover"
         />
@@ -46,14 +51,14 @@ const PostArticle = ({ post }) => {
 
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-1">
-          <img src="/icons/like.svg" className="aspect-square h-5 w-5" />
+          <img src={likeIcon} className="aspect-square h-5 w-5" />
           <span className="text-gray-2 text-center text-base leading-5 font-normal">
             0
           </span>
         </div>
 
         <div className="flex items-center gap-1">
-          <img src="/icons/comment.svg" className="aspect-square h-5 w-5" />
+          <img src={commentIcon} className="aspect-square h-5 w-5" />
           <span className="text-gray-2 text-center text-base leading-5 font-normal">
             0
           </span>
