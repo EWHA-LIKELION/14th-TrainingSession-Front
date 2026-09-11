@@ -1,3 +1,8 @@
+import profileImage from "@/assets/images/profile.png";
+import photoImage from "@/assets/images/photo.png";
+import likeIcon from "@/assets/icons/like.svg";
+import commentIcon from "@/assets/icons/comment.svg";
+
 const tags = ["#태그", "#태그"];
 
 const PostArticle = ({ post }) => {
@@ -5,7 +10,7 @@ const PostArticle = ({ post }) => {
     <article className="flex w-187.75 flex-col items-start rounded-lg bg-white p-7.5">
       <header className="flex flex-row gap-2">
         <img
-          src="/images/profile.png"
+          src={profileImage}
           alt="profile"
           className="aspect-square h-11.25 w-11.25 rounded-[45px]"
         />
@@ -39,17 +44,17 @@ const PostArticle = ({ post }) => {
       </p>
 
       <img
-        src="/images/photo.png"
+        src={photoImage}
         alt="photo"
         className="border-gray-2 mt-7.5 aspect-square h-172.5 w-172.5 rounded-lg border-[0.5px]"
       />
 
       <footer className="mt-11 flex items-center gap-4">
         <button className="text-gray-1 flex flex-row gap-1 text-center text-base font-normal">
-          <img src="/icons/like.svg" alt="like" />0
+          <img src={likeIcon} alt="like" />0
         </button>
         <button className="text-gray-1 flex flex-row gap-1 text-center text-base font-normal">
-          <img src="/icons/comment.svg" alt="comment" />0
+          <img src={commentIcon} alt="comment" />0
         </button>
       </footer>
     </article>

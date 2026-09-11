@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { getPost } from "../../api/post";
+import { getPost } from "@/api/post";
 
-import PageHeader from "../../components/PageHeader";
+import PageHeader from "@/components/PageHeader";
 import PostArticle from "./PostArticle";
 import CommentSection from "./CommentSection";
+
+//assets
+// import icon from "@/icons/없는파일.svg";
 
 const PostDetailPage = () => {
   const { id } = useParams();
@@ -33,6 +36,12 @@ const PostDetailPage = () => {
     <div className="flex flex-col items-center justify-center">
       <PageHeader />
       <main className="bg-gray-4 mt-11.25 mb-27.5 flex flex-col justify-center gap-10">
+        {/* public */}
+        <img src="/icons/없는파일.svg" />
+
+        {/* assets */}
+        {/* <img src={icon} /> */}
+
         <PostArticle post={post} />
         <CommentSection comments={post?.comments} />
       </main>

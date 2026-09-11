@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CommentItem from "./CommentItem";
-import useToastStore from "../../store/useToastStore";
+import useToastStore from "@/store/useToastStore";
+import profileImage from "@/assets/images/profile.png";
 
 const CommentSection = ({ comments }) => {
   // let comment = "";
@@ -30,7 +31,7 @@ const CommentSection = ({ comments }) => {
       >
         <div className="flex items-start gap-3 self-stretch">
           <img
-            src="/images/profile.png"
+            src={profileImage}
             alt="profile"
             className="aspect-square h-11.25 w-11.25 rounded-[45px]"
           />

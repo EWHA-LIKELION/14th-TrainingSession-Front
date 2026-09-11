@@ -1,10 +1,12 @@
+import profileImage from "@/assets/images/profile.png";
+
 const CommentItem = ({ author, date, content, isMyComment }) => {
   return (
     <li className="flex w-175 flex-col items-start gap-2.5 bg-white p-5">
       <header className="flex w-full justify-between">
         <div className="flex flex-row items-center gap-2">
           <img
-            src="/images/profile.png"
+            src={profileImage}
             alt="profile"
             className="aspect-square h-11.25 w-11.25"
           />
