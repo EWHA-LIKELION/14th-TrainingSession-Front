@@ -2,13 +2,15 @@ import { useParams } from "react-router-dom";
 import PageHeader from "../../components/PageHeader";
 import PostArticle from "./PostArticle";
 import CommentSection from "./CommentSection";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ComponentProps } from "react";
 import api from "../../api";
 
 
 function PostDetailPage() {
   const { id } = useParams();
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState<{
+    comments?: ComponentProps<typeof CommentSection>["comments"];
+  } | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {

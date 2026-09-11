@@ -22,8 +22,7 @@ const CommentSection = ({ comments }:CommentSectionProps) => {
     showToast("로그인 후 댓글을 입력할 수 있어요.", "alert");
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>)
-=> {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 
  setComment(e.target.value);
 
@@ -34,7 +33,7 @@ const CommentSection = ({ comments }:CommentSectionProps) => {
     <section className="flex flex-col gap-5">
       <div className="text-lg font-semibold text-black">
         댓글
-        <span className="ml-1 text-main-1">{comments.length}</span>
+        <span className="ml-1 text-main-1">{comments?.length ?? 0}</span>
       </div>
 
       <form
@@ -50,7 +49,7 @@ const CommentSection = ({ comments }:CommentSectionProps) => {
 
           <textarea
             value={comment}
-            onChange={(e) => setComment(e.target.value)}
+            onChange={handleChange}
             placeholder="댓글을 입력하세요."
             required
             maxLength={100}
