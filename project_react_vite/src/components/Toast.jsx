@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import checkIcon from "@/assets/icons/check.svg";
+import alertIcon from "@/assets/icons/alert.svg";
 
 /**
  * Toast 컴포넌트
@@ -10,11 +12,7 @@ const Toast = ({ type = "check", text = "" }) => {
     <div
       className={`flex w-95 items-center gap-2 rounded-lg px-5 py-3 ${type === "check" ? "bg-[#00BC7D]/80" : "bg-[#FF5558]/80"}`}
     >
-      {type === "check" ? (
-        <img src="/icons/check.svg" />
-      ) : (
-        <img src="/icons/alert.svg" />
-      )}
+      {type === "check" ? <img src={checkIcon} /> : <img src={alertIcon} />}
       <p className="text-sm font-semibold text-white">{text}</p>
     </div>
   );
