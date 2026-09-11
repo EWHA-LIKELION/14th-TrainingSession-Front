@@ -1,3 +1,5 @@
+import profileIcon from "@/assets/images/profile.png";
+
 const CommentItem = ({
   author = "작성자이름",
   date = "날짜",
@@ -8,7 +10,7 @@ const CommentItem = ({
     <div className="p-4">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center justify-start gap-2">
-          <img src="/images/profile.png" />
+          <img src={profileIcon} />
 
           <div className="inline-flex flex-col items-start justify-start gap-1">
             <div className="text-Black justify-center text-center font-['Pretendard'] text-base leading-5 font-semibold">

@@ -3,7 +3,7 @@ import PageHeader from "../../components/PageHeader";
 import PostArticle from "./PostArticle";
 import CommentSection from "./CommentSection";
 import { useQuery } from "@tanstack/react-query";
-import { api } from "../../api";
+import api from "../../api";
 
 //import { axios } from "axios";
 //import { useEffect, useState } from "react";

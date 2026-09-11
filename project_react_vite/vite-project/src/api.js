@@ -1,45 +1,29 @@
 import axios from "axios";
-import { useAuthStore } from "./Store/useAuthStore";
 
 // axios 인스턴스 생성
-
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
-
   withCredentials: true,
 });
 
+// 인터셉터 설정
 api.interceptors.response.use(
-  (response) => response,
-
+  (response) => response, // 성공 시 응답 그대로 반환
   (error) => {
-    const { logout } = useAuthStore.getState();
-
+    // 오류 발생 시
     if (error.response) {
-      const { status, data } = error.response;
-
-      // 인증 만료
-
-      if (status === 401) {
-        logout();
-      }
-
-      // 서버가 JSON으로 준 에러
+      const { data } = error.response;
 
       if (data && typeof data === "object") {
-        return Promise.reject(data);
+        return Promise.reject(data); // 서버에서 전달된 오류 메시지를 그대로 반환
       }
-      // 기타 서버 에러
-
-      return Promise.reject({
-        message: "서버 오류가 발생했습니다.",
-      });
     }
 
-    // 네트워크 에러
-
+    // 네트워크 오류나 기타 서버 오류
     return Promise.reject({
-      message: "네트워크 오류가 발생했습니다.",
+      message: "서버 오류가 발생했습니다.",
     });
   },
 );
+
+export default api;
