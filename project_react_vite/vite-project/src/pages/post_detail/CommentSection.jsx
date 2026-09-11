@@ -1,6 +1,7 @@
 import CommentItem from "./CommentItem";
 import { useEffect, useState } from "react";
 import { useToastStore } from "../../Store/useToastStore";
+import profileIcon from "@/assets/images/profile.png";
 
 const CommentSection = ({ comments }) => {
   const showToast = useToastStore((state) => state.showToast);
@@ -30,7 +31,7 @@ const CommentSection = ({ comments }) => {
       </div>
       <form onSubmit={handleSubmit} className="flex-1 gap-2 p-2">
         <div className="flex flex-row gap-2">
-          <img src="/images/profile.png" className="h-11 w-11 rounded-full" />
+          <img src={profileIcon} className="h-11 w-11 rounded-full" />
           <div className="border-Gray-2 flex items-center justify-start self-stretch rounded-lg border px-4 py-3">
             <textarea
               className="text-Gray-2 w-96 justify-start font-['Pretendard'] text-base leading-5 font-normal outline-none"

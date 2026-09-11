@@ -1,3 +1,7 @@
+import likeIcon from "@/assets/icons/like.svg";
+
+import commentIcon from "@/assets/icons/comment.svg";
+
 const tags = ["#태그", "#태그"];
 
 const PostArticle = ({ post }) => {
@@ -57,13 +61,13 @@ const PostArticle = ({ post }) => {
       <footer className="mt-11 inline-flex items-center justify-start gap-4">
         <div className="flex items-center justify-start gap-1">
           <div className="inline-flex items-center justify-start gap-1">
-            <img src="/icons/like.svg" />
+            <img src={likeIcon} />
             <span className="text-Gray-2 justify-start text-center font-['Pretendard'] text-base leading-5 font-normal">
               0
             </span>
           </div>
           <div className="inline-flex items-center justify-start gap-1">
-            <img src="/icons/comment.svg" />
+            <img src={commentIcon} />
             <span className="text-Gray-2 justify-start text-center font-['Pretendard'] text-base leading-5 font-normal">
               0
             </span>
