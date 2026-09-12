@@ -1,11 +1,12 @@
 import React from "react";
 import CommentItem from "./CommentItem";
 import { useState, useEffect } from "react";
-import useToastStore from "../../store/useToastStore";
-import type { Comment } from "../../types/post";
+import useToastStore from "@/store/useToastStore";
+import type { Comment } from "@/types/post";
+import Profile from "@/assets/images/profile.png";
 
 interface CommentSectionProps {
-  comments?: Commnet[];
+  comments?: Comment[];
 }
 
 function CommentSection({ comments }: CommentSectionProps) {
@@ -49,7 +50,7 @@ function CommentSection({ comments }: CommentSectionProps) {
             <div className="bg-grey-3 h-[2.8125rem] w-[2.8125rem] shrink-0 overflow-hidden rounded-full">
               <img
                 className="h-full w-full object-cover"
-                src="/images/profile.png"
+                src={Profile}
                 alt="profile"
               />
             </div>
