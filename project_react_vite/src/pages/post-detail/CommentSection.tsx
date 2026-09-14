@@ -2,6 +2,7 @@ import CommentItem from "./CommentItem";
 import { useEffect, useState } from "react";
 import useToastStore from "../../store/useToastStore";
 import type { Comment } from "../../types/post";
+import profileImg from "@/assets/images/profile.png";
 
 interface CommentSectionProps{
   comments?: Comment[];
@@ -42,7 +43,7 @@ const CommentSection = ({ comments }:CommentSectionProps) => {
       >
         <div className="flex w-full gap-3">
           <img
-            src="/images/profile.png"
+            src={profileImg}
             alt="profile"
             className="h-10 w-10 rounded-full"
           />

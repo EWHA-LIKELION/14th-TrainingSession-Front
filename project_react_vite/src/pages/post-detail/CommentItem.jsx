@@ -1,3 +1,4 @@
+import profileImg from "@/assets/images/profile.png";
 const CommentItem = ({
   author = "작성자",
   date = "0000.00.00. 00:00",
@@ -9,7 +10,7 @@ const CommentItem = ({
       <header className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <img
-            src="/images/profile.png"
+            src={profileImg}
             alt="profile"
             className="h-10 w-10 rounded-full"
           />

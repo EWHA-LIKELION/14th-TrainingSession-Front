@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
-
+import checkicon from "@/assets/icons/check.svg";
+import alerticon from "@/assets/icons/alert.svg";
 
 const Toast = ({ type = "check", text = "" }) => {
 
@@ -15,11 +16,11 @@ ${type === "check" ? "bg-main-1" : "bg-error"}`}
 
  {type === "check" ? (
 
- <img src="/icons/check.svg" />
+ <img src={checkicon} />
 
  ) : (
 
- <img src="/icons/alert.svg" />
+ <img src={alerticon} />
 
  )}
 
