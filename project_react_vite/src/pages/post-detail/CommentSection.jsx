@@ -1,6 +1,7 @@
-import CommentItem from "./CommentItem";
+import profileImage from "@/assets/images/profile.png";
+import CommentItem from "@/pages/post-detail/CommentItem";
 import { useEffect, useState } from "react";
-import useToastStore from "../../store/useToastStore";
+import useToastStore from "@/store/useToastStore";
 
 const CommentSection = ({ comments }) => {
   const [comment, setComment] = useState("");
@@ -24,7 +25,7 @@ const CommentSection = ({ comments }) => {
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <div className="flex items-start gap-3">
           <img
-            src="/images/profile.png"
+            src={profileImage}
             alt="profile"
             className="mt-1 h-11.25 w-11.25 shrink-0 rounded-full object-cover"
           />
