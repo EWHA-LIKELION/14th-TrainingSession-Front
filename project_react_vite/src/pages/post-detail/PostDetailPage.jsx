@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"; // useParams는 URL의 매개변수에 접근할 수 있게 해줌
 import { useQuery } from "@tanstack/react-query"; // useQuery는 데이터를 가져오고 캐싱하는 데 사용되는 React Query의 훅
-import PageHeader from "../../components/PageHeader"; // ../은 상위 폴더로 이동한다는 뜻
+import PageHeader from "@/components/PageHeader"; // ../은 상위 폴더로 이동한다는 뜻
 import PostArticle from "./PostArticle"; // ./은 같은 폴더 내에서 찾는다는 뜻
 import CommentSection from "./CommentSection";
 

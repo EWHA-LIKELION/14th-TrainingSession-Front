@@ -1,3 +1,5 @@
+import profile from "../../assets/images/profile.png";
+
 const CommentItem = ({
   author = "작성자",
   date = "0000. 00. 00. 00:00",
@@ -9,11 +11,7 @@ const CommentItem = ({
     <li className="flex flex-col items-start gap-3 p-5 self-stretch">
       <header className="flex justify-between items-center self-stretch">
         <div className="flex items-center gap-2.5">
-          <img
-            src="/images/profile.png"
-            alt="profile"
-            className="w-10 h-10 rounded-full"
-          />
+          <img src={profile} alt="profile" className="w-10 h-10 rounded-full" />
           <div className="flex flex-col items-start justify-center">
             <h5 className="text-base font-semibold leading-5 text-black">
               {author}

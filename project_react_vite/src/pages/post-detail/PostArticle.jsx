@@ -1,4 +1,8 @@
 import { useState } from "react"; // 좋아요 기능 구현을 위해 UseState 불러오기
+import profile from "@/assets/images/profile.png"; // 프로필 이미지 불러오기
+import photo from "@/assets/images/photo.png"; // 본문 이미지 불러오기
+import likeIcon from "@/assets/icons/like.svg"; // 좋아요 아이콘 불러오기
+import commentIcon from "@/assets/icons/comment.svg"; // 댓글 아이콘 불러오기
 
 const tags = ["#태그", "#태그"];
 
@@ -15,7 +19,7 @@ const PostArticle = ({ post }) => {
       <header className="flex items-center self-stretch gap-2.5">
         <div className="flex items-center gap-2">
           <img
-            src="/images/profile.png"
+            src={profile}
             alt="프로필 사진"
             className="w-11.25 h-11.25 rounded-full object-cover"
           />
@@ -59,7 +63,7 @@ const PostArticle = ({ post }) => {
         <div className="mt-6 w-full h-full rounded-lg border-[0.5px] border-gray-3 overflow-hidden">
           {/* img 태그에 rounded 넣지 말고 div 태그 하나 더 만들어!! */}
           <img
-            src="/images/photo.png"
+            src={photo}
             alt="본문 사진"
             className="w-full h-full object-cover"
           />
@@ -68,7 +72,7 @@ const PostArticle = ({ post }) => {
       <footer className="mt-10 flex items-center gap-4">
         <div className="flex items-center gap-1.5">
           <img
-            src="/icons/like.svg"
+            src={likeIcon}
             alt="좋아요"
             onClick={handleLikeClick} // 좋아요 아이콘 클릭 시 handleLikeClick 함수 실행
             className="w-5 h-5 cursor-pointer" // 좋아요 아이콘에 마우스 올렸을 때 포인터로 변경
@@ -78,11 +82,7 @@ const PostArticle = ({ post }) => {
           </h6>{" "}
           {/* 고정된 0 대신 상태값 보이게!! */}
         </div>
-        <img
-          src="/icons/comment.svg"
-          alt="댓글"
-          className="w-5 h-5 cursor-pointer"
-        />
+        <img src={commentIcon} alt="댓글" className="w-5 h-5 cursor-pointer" />
         <h6 className="text-base font-normal leading-5 text-gray-2 -ml-2">0</h6>
       </footer>
     </article>
