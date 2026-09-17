@@ -1,10 +1,14 @@
+import commentIcon from "@/assets/icons/comment.svg";
+import likeIcon from "@/assets/icons/like.svg";
+import photoImage from "@/assets/images/photo.png";
+import profileImage from "@/assets/images/profile.png";
 const PostArticle = ({ post }) => {
   return (
     <article className="flex w-full flex-col gap-3 rounded-lg bg-white p-[30px]">
       {/*게시물 작성자 정보*/}
       <header className="flex items-center gap-2">
         <img
-          src="/images/profile.png"
+          src={profileImage}
           alt="profile"
           className="h-11 w-11 rounded-full object-cover"
         />
@@ -38,7 +42,7 @@ const PostArticle = ({ post }) => {
       {/*게시물 이미지*/}
       <div className="border-gray-3 overflow-hidden rounded-lg border">
         <img
-          src="/images/photo.png"
+          src={photoImage}
           alt="photo"
           className="aspect-square w-full object-cover"
         />
@@ -46,10 +50,10 @@ const PostArticle = ({ post }) => {
       {/*좋아요/댓글 버튼 영역*/}
       <footer className="flex items-center gap-4">
         <button className="text-gray-2 mt-8 mb-4 flex items-center gap-1 text-sm">
-          <img src="/icons/like.svg" alt="like" />0
+          <img src={likeIcon} alt="like" />0
         </button>
         <button className="text-gray-2 mt-8 mb-4 flex items-center gap-1 text-sm">
-          <img src="/icons/comment.svg" alt="comment" />0
+          <img src={commentIcon} alt="comment" />0
         </button>
       </footer>
     </article>

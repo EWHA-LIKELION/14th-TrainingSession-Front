@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import PageHeader from "../../components/PageHeader";
-import PostArticle from "./PostArticle";
-import CommentSection from "./CommentSection";
+import PageHeader from "@/components/PageHeader";
+import PostArticle from "@/pages/post-detail/PostArticle";
+import CommentSection from "@/pages/post-detail/CommentSection";
 import { useQuery } from "@tanstack/react-query";
-import api from "../../api";
+import api from "@/api";
 
 function PostDetailPage() {
   const { id } = useParams();
