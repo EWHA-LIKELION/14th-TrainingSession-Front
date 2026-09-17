@@ -1,4 +1,8 @@
 import { useState } from "react";
+import Profile from "@/assets/images/profile.png";
+import Photo from "@/assets/images/photo.png";
+import Likes from "@/assets/icons/like.svg";
+import CommentIcon from "@/assets/icons/comment.svg";
 
 const PostArticle = ({ post }) => {
   const [likeCount, setLikeCount] = useState(0); // 좋아요 수 세기
@@ -11,7 +15,7 @@ const PostArticle = ({ post }) => {
       <header className="flex items-center gap-2 self-stretch">
         <img
           className="aspect-square h-[2.8125rem] w-[2.8125rem] shrink-0 rounded-full bg-gray-200 object-cover"
-          src="/images/profile.png"
+          src={Profile}
           alt="profile"
         />
         <div className="flex w-[5.9375rem] shrink-0 flex-col items-start gap-1">
@@ -47,7 +51,7 @@ const PostArticle = ({ post }) => {
       {/* 게시물 이미지 */}
       <img
         className="border-grey-2 bg-lightgray aspect-square h-[43.125rem] w-[43.125rem] rounded-lg border-[0.5px] object-cover object-center"
-        src="/images/photo.png"
+        src={Photo}
         alt="photo"
       />
 
@@ -57,16 +61,12 @@ const PostArticle = ({ post }) => {
           className="text-grey-2 font-pretendard flex items-center gap-1 text-center text-base leading-5 font-normal"
           onClick={() => setLikeCount(likeCount + 1)}
         >
-          <img
-            src="/icons/like.svg"
-            alt="like"
-            className="aspect-square h-5 w-5"
-          />
+          <img src={Likes} alt="like" className="aspect-square h-5 w-5" />
           {likeCount}
         </button>
         <button className="text-grey-2 font-pretendard flex items-center gap-1 text-center text-base leading-5 font-normal">
           <img
-            src="/icons/comment.svg"
+            src={CommentIcon}
             alt="comment"
             className="aspect-square h-5 w-5"
           />
