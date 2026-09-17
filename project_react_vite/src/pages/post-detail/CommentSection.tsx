@@ -7,6 +7,8 @@ import useToastStore from "../../store/useToastStore";
 // 컴포넌트가 받는 props의 모양을 interface로 정의
 import type { Comment } from "../../types/post";
 
+import profileImage from "@/assets/images/profile.png";
+
 // 이 컴포넌트는 comments 를 받음 (로딩 중엔 없을 수 있어 optional chaining ("?") 사용)
 interface CommentSectionProps {
   comments?: Comment[];
@@ -46,7 +48,7 @@ const CommentSection = ({ comments }: CommentSectionProps) => {
 
       <div className="flex w-full items-start gap-3 self-stretch">
         <img
-          src="/images/profile.png"
+          src={profileImage}
           className="aspect-square h-[45px] w-[45px] rounded-full object-cover"
           alt="profile"
         />
